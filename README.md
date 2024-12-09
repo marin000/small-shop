@@ -32,7 +32,7 @@ Small product catalog
 
 * Node.js (version 18 or higher)
 * npm (Node Package Manager, usually comes with Node.js)
-* Docker (for running MySQL in a container)
+* Docker (if running with Docker)
 
 ### Installation
 
