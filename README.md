@@ -71,4 +71,4 @@ docker-compose up
 docker-compose down
 ```
 
-<p align="right"><a href="#small-shop">back to top</a></p> ```
+<p align="right"><a href="#small-shop">back to top</a></p>
