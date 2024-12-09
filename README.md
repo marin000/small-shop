@@ -1,50 +1,74 @@
-# React + TypeScript + Vite
+# Small Shop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h3>Table of Contents</h3>
+  <ol>
+    <li>
+      <a href="#about-the-app">About The App</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+  </ol>
 
-Currently, two official plugins are available:
+## 1. About The App
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Small product catalog
 
-## Expanding the ESLint configuration
+#### App Built With:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+- ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+- ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+- ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-- Configure the top-level `parserOptions` property like this:
+## 2. Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+
+* Node.js (version 18 or higher)
+* npm (Node Package Manager, usually comes with Node.js)
+* Docker (for running MySQL in a container)
+
+### Installation
+
+#### 1. Clone the repository
+```bash
+git https://github.com/marin000/small-shop.git
+cd small-shop
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Running Without Docker
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+#### 1. Install Dependencies
+```bash
+npm install
 ```
+
+#### 2. Run the Development Server
+```bash
+npm run dev
+```
+
+### Running With Docker
+
+#### 1. Build the Docker Image
+```bash
+docker-compose build
+```
+
+#### 2. Start the Application with Docker Compose
+```bash
+docker-compose up
+```
+
+#### 3. Stopping the Application
+```bash
+docker-compose down
+```
+
+<p align="right"><a href="#small-shop">back to top</a></p> ```
