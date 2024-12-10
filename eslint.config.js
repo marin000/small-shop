@@ -26,7 +26,7 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
-      'comma-dangle': ['error', 'always-multiline'],
+      'comma-dangle': ['error', 'never-multiline'],
     },
   }
 );
