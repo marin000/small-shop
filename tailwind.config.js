@@ -143,6 +143,9 @@ export default {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
+      backgroundColor: {
+        'spring-wood': '#F9F7F2',
+      },
     },
   },
   plugins: [],
