@@ -7,3 +7,7 @@ export const truncateText = (text: string, maxLength: number) => {
     ? truncated.slice(0, lastSpaceIndex)
     : truncated;
 };
+
+export const formatPrice = (price: number) => {
+  return `${price.toFixed(2)}€`;
+};

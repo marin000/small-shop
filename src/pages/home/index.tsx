@@ -1,7 +1,7 @@
 import React from 'react';
-import Products from '../../features/products';
-import AppLayout from '../../components/layout/appLayout';
-import Header from '../../components/header';
+import Products from '@/features/products';
+import AppLayout from '@/components/layout/appLayout';
+import Header from '@/components/header';
 
 const HomePage: React.FC = () => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useGetProducts } from '../../api/getProducts';
-import LoadingSpinner from '../../components/loadingSpinner';
-import { Product } from '../../types/product';
-import ProductCard from '../../components/productCard';
+import { useGetProducts } from '@/api/getProducts';
+import LoadingSpinner from '@/components/loadingSpinner';
+import { Product } from '@/types/product';
+import ProductCard from '@/components/cards/productCard';
 
 const Products: React.FC = () => {
   const { data, isLoading: loading, isError } = useGetProducts();
