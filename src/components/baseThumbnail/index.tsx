@@ -1,13 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
 
-interface ProductThumbnailProps {
+interface BaseThumbnailProps {
   thumbnail: string;
   title: string;
   className?: string;
 }
 
-const ProductThumbnail: React.FC<ProductThumbnailProps> = ({
+const BaseThumbnail: React.FC<BaseThumbnailProps> = ({
   thumbnail,
   title,
   className = '',
@@ -21,4 +21,4 @@ const ProductThumbnail: React.FC<ProductThumbnailProps> = ({
   );
 };
 
-export default ProductThumbnail;
+export default BaseThumbnail;

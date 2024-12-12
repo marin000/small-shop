@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
 import { formatPrice, truncateText } from '@/utils/helper';
-import ProductThumbnail from '@/components/productThumbnail';
-import ProductDialog from '@/components/dialogs/productDialog';
 import BaseButton from '@/components/baseButton';
+import BaseCard from '@/components/baseCard';
+import ProductDialog from '../productDialog';
+import BaseThumbnail from '@/components/baseThumbnail';
 
 const descriptionMaxLength = 100;
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const { description, thumbnail, title, price, availabilityStatus } =
-    product;
+  const {
+    details: { description, price, availabilityStatus },
+    thumbnail,
+    title,
+  } = product;
 
   const truncatedDescription =
     description.length > descriptionMaxLength
@@ -27,10 +31,14 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
   return (
     <React.Fragment>
-      <div className="relative border rounded-lg p-4 shadow-md hover:shadow-lg transition">
-        <ProductThumbnail title={title} thumbnail={thumbnail} />
+      <BaseCard className="relative hover:shadow-lg transition">
+        <BaseThumbnail title={title} thumbnail={thumbnail} />
         <h2 className="text-lg font-semibold">{title}</h2>
-        <p className="text-gray-600 mt-1">{formatPrice(price)}</p>
+        <p className="text-gray-600 mt-1">
+          <span className="bg-gray-300 p-1 rounded-md shadow-sm inline-block mb-2">
+            {formatPrice(price)}
+          </span>
+        </p>
         <p className="text-gray-600 text-sm mt-1">
           {truncatedDescription}
           <span
@@ -50,7 +58,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           onClick={toggleDialog}
           className="absolute bottom-4 right-4"
         />
-      </div>
+      </BaseCard>
 
       <ProductDialog
         product={product}

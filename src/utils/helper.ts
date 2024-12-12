@@ -11,3 +11,15 @@ export const truncateText = (text: string, maxLength: number) => {
 export const formatPrice = (price: number) => {
   return `${price.toFixed(2)}€`;
 };
+
+export const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  return date.toLocaleDateString('en-GB', {
+    timeZone: timezone,
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+};

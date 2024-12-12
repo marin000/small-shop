@@ -3,7 +3,7 @@ import Products from '@/features/products';
 import AppLayout from '@/components/layout/appLayout';
 import Header from '@/components/header';
 
-const HomePage: React.FC = () => {
+const DashboardPage: React.FC = () => {
   return (
     <AppLayout>
       <AppLayout.Header>
@@ -16,4 +16,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default DashboardPage;

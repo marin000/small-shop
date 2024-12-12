@@ -1,10 +1,10 @@
+import DashboardPage from '@/pages/dashboard';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from '@/pages/home';
 
 const MainRouter: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<DashboardPage />} />
     </Routes>
   );
 };
