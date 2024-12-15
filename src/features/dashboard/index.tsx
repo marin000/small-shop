@@ -5,17 +5,17 @@ import LoadingSpinner from '@/components/loadingSpinner';
 import { Product } from '@/types/product';
 import { formatProductData } from '@/utils/formatters/productFormatter';
 import ProductCard from './components/cards/productCard';
-import FilterToolbar from './components/filterToolbar';
 import Pagination from '@/components/pagination';
 import {
   calculateTotalPages,
   calculateCurrentPage,
 } from '@/utils/paginationUtils';
+import FilterCategoryToolbar from './components/filterCategoryToolbar';
 import { useTranslation } from 'react-i18next';
 import { filterProducts } from '@/utils/helper';
 import { CategoryFormatted } from '@/types/categories';
 
-const Products: React.FC = () => {
+const Dashboard: React.FC = () => {
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryFormatted>({
@@ -95,7 +95,7 @@ const Products: React.FC = () => {
 
   return (
     <div className="container mx-auto py-8">
-      <FilterToolbar
+      <FilterCategoryToolbar
         categories={categoriesData}
         selectedCategory={selectedCategory}
         onSearchChange={handleOnSearchChange}
@@ -130,4 +130,4 @@ const Products: React.FC = () => {
   );
 };
 
-export default Products;
+export default Dashboard;

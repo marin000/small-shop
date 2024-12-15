@@ -1,5 +1,5 @@
 import React from 'react';
-import ReviewCard from '@/features/products/components/cards/reviewCard';
+import ReviewCard from '@/features/dashboard/components/cards/reviewCard';
 import { useTranslation } from 'react-i18next';
 
 interface Review {

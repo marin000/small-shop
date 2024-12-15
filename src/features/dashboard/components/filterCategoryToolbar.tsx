@@ -5,14 +5,14 @@ import { Category, CategoryFormatted } from '@/types/categories';
 import { formatCategoriesData } from '@/utils/formatters/categoryFormatter';
 import { useTranslation } from 'react-i18next';
 
-interface FilterToolbarProps {
+interface FilterCategoryToolbarProps {
   categories: Category[];
   selectedCategory: CategoryFormatted;
   onCategoryChange: (category: CategoryFormatted) => void;
   onSearchChange: (searchTerm: string) => void;
 }
 
-const FilterToolbar: React.FC<FilterToolbarProps> = ({
+const FilterCategoryToolbar: React.FC<FilterCategoryToolbarProps> = ({
   categories,
   selectedCategory,
   onCategoryChange,
@@ -43,4 +43,4 @@ const FilterToolbar: React.FC<FilterToolbarProps> = ({
   );
 };
 
-export default FilterToolbar;
+export default FilterCategoryToolbar;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Products from '@/features/products';
 import AppLayout from '@/components/layout/appLayout';
 import Header from '@/components/header';
+import Dashboard from '@/features/dashboard';
 
 const DashboardPage: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const DashboardPage: React.FC = () => {
         <Header />
       </AppLayout.Header>
       <AppLayout.Main>
-        <Products />
+        <Dashboard />
       </AppLayout.Main>
     </AppLayout>
   );
