@@ -29,7 +29,7 @@ const FilterToolbar: React.FC<FilterToolbarProps> = ({
   };
 
   return (
-    <div className="flex items-center space-x-4 mb-8">
+    <div className="flex flex-col space-y-4 mb-8 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
       <BaseDropdown
         id="categories-dropdown"
         name="categories-dropdown"

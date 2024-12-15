@@ -38,9 +38,9 @@ const BaseDropdown: React.FC<BaseDropdownProps> = ({
           className
         )}
       >
-        <MenuButton className="px-2 py-2 bg-white border rounded-md flex justify-between items-center w-56">
+        <MenuButton className="px-2 py-2 bg-white border rounded-md flex justify-between items-center w-72">
           <span>{selectedItem}</span>
-          <ChevronDownIcon className="h-5 w-5 text-gray-500" />
+          <ChevronDownIcon className="h-6 w-8 text-gray-500" />
         </MenuButton>
         <Transition
           as={React.Fragment}

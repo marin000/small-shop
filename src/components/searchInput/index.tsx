@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from '@headlessui/react';
+const maxInputCharacters = 50;
 
 interface SearchInputProps {
   onSearchChange: (searchTerm: string) => void;
@@ -24,7 +25,8 @@ const SearchInput: React.FC<SearchInputProps> = ({
         value={searchTerm}
         onChange={handleSearchChange}
         placeholder="Search..."
-        className="px-4 py-2 border rounded-md w-80 focus:ring-2 focus:ring-blue-500"
+        className={`px-4 py-2 border rounded-md w-80 focus:ring-gray-400 focus:ring-1 focus:outline-none focus:border-gray-400`}
+        maxLength={maxInputCharacters}
       />
     </div>
   );
