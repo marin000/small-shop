@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from '@headlessui/react';
+import { useTranslation } from 'react-i18next';
 const maxInputCharacters = 50;
 
 interface SearchInputProps {
@@ -9,6 +10,7 @@ interface SearchInputProps {
 const SearchInput: React.FC<SearchInputProps> = ({
   onSearchChange,
 }) => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (
@@ -24,7 +26,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         type="text"
         value={searchTerm}
         onChange={handleSearchChange}
-        placeholder="Search..."
+        placeholder={t('common.searchButtonLabel')}
         className={`px-4 py-2 border rounded-md w-80 focus:ring-gray-400 focus:ring-1 focus:outline-none focus:border-gray-400`}
         maxLength={maxInputCharacters}
       />

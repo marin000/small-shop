@@ -3,6 +3,7 @@ import { formatPrice } from '@/utils/helper';
 import { ProductDetails } from '@/types/product';
 import BaseCard from '@/components/baseCard';
 import ProductDetail from '@/features/products/components/productDetail';
+import { t } from 'i18next';
 
 interface ProductDetailsTabProps {
   productDetails: ProductDetails;
@@ -36,23 +37,32 @@ const ProductDetailsTab: React.FC<ProductDetailsTabProps> = ({
         />
       </span>
       <BaseCard>
-        <ProductDetail label="Brand" value={brand} />
-        <ProductDetail label="Category" value={category} />
-        <ProductDetail label="Stock" value={stock} />
+        <ProductDetail label={t('dashboard.brand')} value={brand} />
         <ProductDetail
-          label="Dimensions"
+          label={t('dashboard.category')}
+          value={category}
+        />
+        <ProductDetail label={t('dashboard.stock')} value={stock} />
+        <ProductDetail
+          label={t('dashboard.dimensions')}
           value={`${dimensions.width} x ${dimensions.height} x ${dimensions.depth} cm`}
         />
-        <ProductDetail label="Weight" value={weight} />
-        <ProductDetail label="Rating" value={`${rating} / 5`} />
-        <ProductDetail label="Sku" value={sku} />
-        <ProductDetail label="Return policy" value={returnPolicy} />
+        <ProductDetail label={t('dashboard.weight')} value={weight} />
         <ProductDetail
-          label="Warranty Information"
+          label={t('dashboard.rating')}
+          value={`${rating} / 5`}
+        />
+        <ProductDetail label={t('dashboard.sku')} value={sku} />
+        <ProductDetail
+          label={t('dashboard.returnPolicy')}
+          value={returnPolicy}
+        />
+        <ProductDetail
+          label={t('dashboard.warrantyInformation')}
           value={warrantyInformation}
         />
         <ProductDetail
-          label="Shipping Information"
+          label={t('dashboard.shippingInformation')}
           value={shippingInformation}
         />
       </BaseCard>

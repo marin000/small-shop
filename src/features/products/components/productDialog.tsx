@@ -5,6 +5,7 @@ import BaseThumbnail from '@/components/baseThumbnail';
 import ProductDetailsTab from './tabs/productDetailsTab';
 import ProductReviewsTab from './tabs/productReviewsTab';
 import TabsContainer from '@/components/tabsContainer';
+import { useTranslation } from 'react-i18next';
 
 interface ProductDialogProps {
   product: Product;
@@ -17,7 +18,10 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [activeTab, setActiveTab] = useState('Details');
+  const { t } = useTranslation();
+  const detailsTabLabel = t('dashboard.detailsTab');
+  const reviewTabLabel = t('dashboard.reviewTab');
+  const [activeTab, setActiveTab] = useState(detailsTabLabel);
   const { title, thumbnail, details, reviews } = product;
 
   return (
@@ -31,13 +35,13 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
         <TabsContainer
           activeTab={activeTab}
           onTabClick={setActiveTab}
-          tabs={['Details', 'Reviews']}
+          tabs={[detailsTabLabel, reviewTabLabel]}
         />
         <div className="mt-4">
-          {activeTab === 'Details' && (
+          {activeTab === detailsTabLabel && (
             <ProductDetailsTab productDetails={details} />
           )}
-          {activeTab === 'Reviews' && (
+          {activeTab === reviewTabLabel && (
             <ProductReviewsTab reviews={reviews} />
           )}
         </div>

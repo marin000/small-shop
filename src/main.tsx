@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
@@ -9,6 +8,7 @@ import {
 } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from './components/errorBoundaryFallback.tsx';
+import './i18n/index';
 
 const queryClient = new QueryClient();
 

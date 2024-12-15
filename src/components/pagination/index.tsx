@@ -6,6 +6,7 @@ import {
 import { Button } from '@headlessui/react';
 import BaseMenu from '../baseMenu';
 import { calculatePaginationRange } from '@/utils/paginationUtils';
+import { useTranslation } from 'react-i18next';
 
 interface PaginationProps {
   currentPage: number;
@@ -26,10 +27,13 @@ const Pagination: React.FC<PaginationProps> = ({
   itemsPerPage,
   itemsPerPageOptions,
 }) => {
+  const { t } = useTranslation();
   const paginationRange = calculatePaginationRange(
     currentPage,
     totalPages
   );
+  const start = (currentPage - 1) * itemsPerPage + 1;
+  const end = Math.min(currentPage * itemsPerPage, totalResults);
 
   return (
     <div className="flex justify-center items-center mt-8 mb-24">
@@ -68,14 +72,20 @@ const Pagination: React.FC<PaginationProps> = ({
       <div className="flex items-center space-x-4 ml-4">
         <span className="text-gray-700 flex items-center space-x-1">
           <span>
-            Showing {(currentPage - 1) * itemsPerPage + 1} to{' '}
+            {t('common.paginationFirstPart', {
+              start,
+            })}
           </span>
           <BaseMenu
-            selectedOption={itemsPerPage}
+            selectedOption={end}
             options={itemsPerPageOptions}
             onOptionSelect={onItemsPerPageChange}
           />
-          <span> of {totalResults} results</span>
+          <span>
+            {t('common.paginationSecondPart', {
+              totalResults,
+            })}
+          </span>
         </span>
       </div>
     </div>

@@ -11,8 +11,10 @@ import {
   calculateTotalPages,
   calculateCurrentPage,
 } from '@/utils/paginationUtils';
+import { useTranslation } from 'react-i18next';
 
 const Products: React.FC = () => {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('');
   const [currentSkip, setCurrentSkip] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(20);
@@ -57,7 +59,7 @@ const Products: React.FC = () => {
   if (productsError || categoriesError) {
     return (
       <div className="text-center text-red-500">
-        Failed to load products. Please try again later.
+        t('dashboard.loadFailed')
       </div>
     );
   }
@@ -76,16 +78,18 @@ const Products: React.FC = () => {
     <div className="container mx-auto py-8">
       <FilterToolbar
         categories={categoriesData}
-        selectedCategory={selectedCategory || 'Select category'}
+        selectedCategory={
+          selectedCategory || t('dashboard.selectCategory')
+        }
         onSearchChange={handleOnSearchChange}
         onCategoryChange={handleOnCategoryChange}
       />
       <h1 className="text-2xl font-bold text-center mb-6">
-        Products
+        {t('dashboard.title')}
       </h1>
       {formattedProducts.length === 0 ? (
         <div className="text-center text-gray-600">
-          No products available for this category.
+          {t('dashboard.noProducts')}
         </div>
       ) : (
         <React.Fragment>

@@ -5,10 +5,12 @@ import BaseButton from '@/components/baseButton';
 import BaseCard from '@/components/baseCard';
 import ProductDialog from '../productDialog';
 import BaseThumbnail from '@/components/baseThumbnail';
+import { useTranslation } from 'react-i18next';
 
 const descriptionMaxLength = 100;
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+  const { t } = useTranslation();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const {
@@ -45,7 +47,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             className="text-gray-500 mt-1 block cursor-pointer"
             onClick={toggleDialog}
           >
-            Read more
+            {t('dashboard.readMore')}
           </span>
         </p>
         <p className={`mt-2 text-sm ${statusClass}`}>
@@ -53,7 +55,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         </p>
 
         <BaseButton
-          label="Details"
+          label={t('dashboard.detailsButton')}
           size="small"
           onClick={toggleDialog}
           className="absolute bottom-4 right-4"

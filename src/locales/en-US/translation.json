@@ -1,0 +1,27 @@
+{
+  "common": {
+    "searchButtonLabel": "Search",
+    "paginationFirstPart": "Showing {{ start }} to ",
+    "paginationSecondPart": "of {{ totalResults }} results"
+  },
+  "dashboard": {
+    "title": "Products",
+    "loadFailed": "Failed to load products. Please try again later.",
+    "noProducts": "No products available for this category.",
+    "selectCategory": "Select category",
+    "readMore": "Read more",
+    "detailsButton": "Details",
+    "detailsTab": "Details",
+    "reviewTab": "Reviews",
+    "brand": "Brand",
+    "category": "Category",
+    "stock": "Stock",
+    "dimensions": "Dimensions",
+    "weight": "Weight",
+    "rating": "Rating",
+    "sku": "SKU",
+    "returnPolicy": "Return policy",
+    "warrantyInformation": "Warranty Information",
+    "shippingInformation": "Shipping Information"
+  }
+}
