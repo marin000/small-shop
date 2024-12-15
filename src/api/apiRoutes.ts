@@ -1,6 +1,6 @@
 export const API_ROUTES = {
-  getProducts: (limit: number, skip: number) =>
-    `/products?limit=${limit}&skip=${skip}`,
+  getProducts: (searchTerm: string, limit: number, skip: number) =>
+    `/products/search?q=${searchTerm}&&limit=${limit}&skip=${skip}`,
   getProductsByCategory: (
     category: string,
     limit: number,

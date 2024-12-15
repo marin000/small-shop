@@ -1,6 +1,6 @@
 {
   "common": {
-    "searchButtonLabel": "Search",
+    "searchButtonLabel": "Search (3 characters minimum)",
     "paginationFirstPart": "Showing {{ start }} to ",
     "paginationSecondPart": "of {{ totalResults }} results"
   },
@@ -9,6 +9,7 @@
     "loadFailed": "Failed to load products. Please try again later.",
     "noProducts": "No products available for this category.",
     "selectCategory": "Select category",
+    "allCategories": "All categories",
     "readMore": "Read more",
     "detailsButton": "Details",
     "detailsTab": "Details",

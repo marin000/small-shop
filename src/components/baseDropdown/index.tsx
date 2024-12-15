@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   Menu,
   MenuButton,
   MenuItem,
@@ -16,7 +17,7 @@ interface BaseDropdownProps {
   className?: string;
   options: { value: string; label: string }[];
   selectedItem: string;
-  onChange: (value: string) => void;
+  onChange: (param: { value: string; label: string }) => void;
 }
 
 const BaseDropdown: React.FC<BaseDropdownProps> = ({
@@ -55,12 +56,12 @@ const BaseDropdown: React.FC<BaseDropdownProps> = ({
             <div className="py-1">
               {options.map((option) => (
                 <MenuItem key={option.value}>
-                  <button
-                    onClick={() => onChange(option.value)}
+                  <Button
+                    onClick={() => onChange(option)}
                     className="block px-4 py-2 text-sm w-full text-left text-gray-700"
                   >
                     {option.label}
-                  </button>
+                  </Button>
                 </MenuItem>
               ))}
             </div>

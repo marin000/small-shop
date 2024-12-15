@@ -12,10 +12,17 @@ import {
   calculateCurrentPage,
 } from '@/utils/paginationUtils';
 import { useTranslation } from 'react-i18next';
+import { filterProducts } from '@/utils/helper';
+import { CategoryFormatted } from '@/types/categories';
 
 const Products: React.FC = () => {
   const { t } = useTranslation();
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryFormatted>({
+      value: '',
+      label: t('dashboard.selectCategory'),
+    });
+  const [searchTerm, setSearchTerm] = useState('');
   const [currentSkip, setCurrentSkip] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const itemsPerPageOptions = [10, 20, 30];
@@ -24,7 +31,12 @@ const Products: React.FC = () => {
     data: productsData,
     isLoading: productsLoading,
     isError: productsError,
-  } = useGetProducts(selectedCategory, itemsPerPage, currentSkip);
+  } = useGetProducts(
+    searchTerm,
+    selectedCategory?.value,
+    itemsPerPage,
+    currentSkip
+  );
 
   const {
     data: categoriesData,
@@ -32,11 +44,10 @@ const Products: React.FC = () => {
     isError: categoriesError,
   } = useGetCategories();
 
-  const handleOnSearchChange = () => {
-    console.log('dsa');
-  };
+  const handleOnSearchChange = (searchTerm: string) =>
+    setSearchTerm(searchTerm);
 
-  const handleOnCategoryChange = (category: string) =>
+  const handleOnCategoryChange = (category: CategoryFormatted) =>
     setSelectedCategory(category);
 
   const handlePageChange = (page: number) => {
@@ -44,9 +55,8 @@ const Products: React.FC = () => {
     setCurrentSkip(newSkip);
   };
 
-  const handleItemsPerPageChange = (items: number) => {
+  const handleItemsPerPageChange = (items: number) =>
     setItemsPerPage(items);
-  };
 
   if (productsLoading || categoriesLoading) {
     return (
@@ -59,7 +69,7 @@ const Products: React.FC = () => {
   if (productsError || categoriesError) {
     return (
       <div className="text-center text-red-500">
-        t('dashboard.loadFailed')
+        {t('dashboard.loadFailed')}
       </div>
     );
   }
@@ -68,40 +78,47 @@ const Products: React.FC = () => {
     productsData?.products || []
   );
 
-  const totalPages = productsData
-    ? calculateTotalPages(productsData.total, itemsPerPage)
-    : 0;
+  const filteredProducts = filterProducts(
+    formattedProducts,
+    searchTerm,
+    selectedCategory.value
+  );
 
   const currentPage = calculateCurrentPage(currentSkip, itemsPerPage);
+  const totalItems = searchTerm
+    ? filteredProducts.length
+    : productsData.total;
+
+  const totalPages = productsData
+    ? calculateTotalPages(totalItems, itemsPerPage)
+    : 0;
 
   return (
     <div className="container mx-auto py-8">
       <FilterToolbar
         categories={categoriesData}
-        selectedCategory={
-          selectedCategory || t('dashboard.selectCategory')
-        }
+        selectedCategory={selectedCategory}
         onSearchChange={handleOnSearchChange}
         onCategoryChange={handleOnCategoryChange}
       />
       <h1 className="text-2xl font-bold text-center mb-6">
         {t('dashboard.title')}
       </h1>
-      {formattedProducts.length === 0 ? (
+      {filteredProducts.length === 0 ? (
         <div className="text-center text-gray-600">
           {t('dashboard.noProducts')}
         </div>
       ) : (
         <React.Fragment>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {formattedProducts.map((product: Product) => (
+            {filteredProducts.map((product: Product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
-            totalResults={productsData.total}
+            totalResults={totalItems}
             onPageChange={handlePageChange}
             onItemsPerPageChange={handleItemsPerPageChange}
             itemsPerPage={itemsPerPage}

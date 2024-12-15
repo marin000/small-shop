@@ -1,13 +1,14 @@
+import React from 'react';
 import BaseDropdown from '@/components/baseDropdown';
 import SearchInput from '@/components/searchInput';
-import { Category } from '@/types/categories';
+import { Category, CategoryFormatted } from '@/types/categories';
 import { formatCategoriesData } from '@/utils/formatters/categoryFormatter';
-import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface FilterToolbarProps {
   categories: Category[];
-  selectedCategory: string;
-  onCategoryChange: (category: string) => void;
+  selectedCategory: CategoryFormatted;
+  onCategoryChange: (category: CategoryFormatted) => void;
   onSearchChange: (searchTerm: string) => void;
 }
 
@@ -17,26 +18,24 @@ const FilterToolbar: React.FC<FilterToolbarProps> = ({
   onCategoryChange,
   onSearchChange,
 }) => {
+  const { t } = useTranslation();
   const categoriesFormatted = formatCategoriesData(categories);
 
-  const handleCategoryChange = (value: string) => {
-    const selectedCategory = categories.find(
-      (category) => category.slug === value
-    );
-    if (selectedCategory) {
-      onCategoryChange(selectedCategory.name);
-    }
-  };
+  const handleCategoryChange = (category: CategoryFormatted) =>
+    onCategoryChange(category);
+
+  const categoriesWithAll = [
+    { value: '', label: t('dashboard.allCategories') },
+    ...categoriesFormatted,
+  ];
 
   return (
     <div className="flex flex-col space-y-4 mb-8 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-4">
       <BaseDropdown
         id="categories-dropdown"
         name="categories-dropdown"
-        options={categoriesFormatted}
-        selectedItem={
-          selectedCategory || categoriesFormatted[0].label
-        }
+        options={categoriesWithAll}
+        selectedItem={selectedCategory.label}
         onChange={handleCategoryChange}
       />
       <SearchInput onSearchChange={onSearchChange} />

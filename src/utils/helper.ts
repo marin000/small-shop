@@ -1,3 +1,5 @@
+import { Product } from '@/types/product';
+
 export const truncateText = (text: string, maxLength: number) => {
   const truncated = text.slice(0, maxLength);
   const lastSpaceIndex = truncated.lastIndexOf(' ');
@@ -22,4 +24,16 @@ export const formatDate = (dateString: string) => {
     month: '2-digit',
     year: 'numeric',
   });
+};
+
+export const filterProducts = (
+  products: Product[],
+  searchTerm: string,
+  selectedCategory: string
+): Product[] => {
+  return selectedCategory && searchTerm
+    ? products.filter((product) =>
+        product.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : products;
 };
