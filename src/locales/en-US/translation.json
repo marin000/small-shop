@@ -12,6 +12,7 @@
     "allCategories": "All categories",
     "readMore": "Read more",
     "detailsButton": "Details",
+    "filterButton": "Filter & Sort",
     "detailsTab": "Details",
     "reviewTab": "Reviews",
     "brand": "Brand",
@@ -24,5 +25,14 @@
     "returnPolicy": "Return policy",
     "warrantyInformation": "Warranty Information",
     "shippingInformation": "Shipping Information"
+  },
+  "filterSortDialog": {
+    "titleSort": "Sort products",
+    "titlePrice": "Sort by price",
+    "priceHighToLow": "High to low",
+    "priceLowToHigh": "Low to high",
+    "titleName": "Sort by name",
+    "nameAsc": "Ascending",
+    "nameDesc": "Descending"
   }
 }

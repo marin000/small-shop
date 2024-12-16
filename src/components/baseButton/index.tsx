@@ -5,11 +5,13 @@ import React, { Ref } from 'react';
 type ButtonProps = {
   label?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  variant?: 'primary' | 'danger' | 'transparent';
+  variant?: 'primary' | 'danger' | 'transparent' | 'white';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
   className?: string;
+  iconStart?: React.ReactNode;
+  iconEnd?: React.ReactNode;
 };
 
 const BaseButton: React.FC<ButtonProps> = ({
@@ -20,6 +22,8 @@ const BaseButton: React.FC<ButtonProps> = ({
   size = 'medium',
   ref,
   className = '',
+  iconStart,
+  iconEnd,
   ...rest
 }) => {
   const variants = {
@@ -27,6 +31,7 @@ const BaseButton: React.FC<ButtonProps> = ({
     danger: `text-white bg-danger-500 hover:bg-danger-700`,
     success: `text-white bg-green-500 hover:bg-green-700`,
     transparent: `bg-transparent`,
+    white: `text-black bg-white border border-gray-300 hover:bg-gray-100`,
   };
 
   const sizes = {
@@ -42,7 +47,7 @@ const BaseButton: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       className={clsx(
-        'inline-flex items-center justify-center font-semibold rounded-full data-[hover]:cursor-pointer focus:outline-none',
+        'inline-flex items-center justify-center font-semibold rounded-full data-[hover]:cursor-pointer focus:outline-none shadow-md',
         sizes[size],
         variants[variant],
         disabled && 'data-[disabled]:bg-gray-600',
@@ -50,7 +55,8 @@ const BaseButton: React.FC<ButtonProps> = ({
       )}
       {...rest}
     >
-      {label}
+      {iconStart && <span className="mr-2">{iconStart}</span>} {label}
+      {iconEnd && <span className="ml-2">{iconEnd}</span>}
     </Button>
   );
 };

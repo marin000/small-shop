@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Product } from '@/types/product';
 import BaseDialog from '@/components/baseDialog';
 import BaseThumbnail from '@/components/baseThumbnail';
-import ProductDetailsTab from './tabs/productDetailsTab';
-import ProductReviewsTab from './tabs/productReviewsTab';
+import ProductDetailsTab from '../tabs/productDetailsTab';
+import ProductReviewsTab from '../tabs/productReviewsTab';
 import TabsContainer from '@/components/tabsContainer';
 import { useTranslation } from 'react-i18next';
 

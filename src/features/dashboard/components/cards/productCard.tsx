@@ -3,7 +3,7 @@ import { Product } from '@/types/product';
 import { formatPrice, truncateText } from '@/utils/helper';
 import BaseButton from '@/components/baseButton';
 import BaseCard from '@/components/baseCard';
-import ProductDialog from '../productDialog';
+import ProductDialog from '../dialogs/productDialog';
 import BaseThumbnail from '@/components/baseThumbnail';
 import { useTranslation } from 'react-i18next';
 

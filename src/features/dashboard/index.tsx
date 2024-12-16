@@ -14,6 +14,10 @@ import FilterCategoryToolbar from './components/filterCategoryToolbar';
 import { useTranslation } from 'react-i18next';
 import { filterProducts } from '@/utils/helper';
 import { CategoryFormatted } from '@/types/categories';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+import BaseButton from '@/components/baseButton';
+import FilterDialog from './components/dialogs/filterSortDialog';
+import { SortOption } from '@/types/sortFilter';
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
@@ -25,18 +29,23 @@ const Dashboard: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentSkip, setCurrentSkip] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [isFilterDialogOpen, setIsFilterDialogOpen] = useState(false);
+  const [sortBy, setSortBy] = useState('');
+  const [order, setOrder] = useState('');
   const itemsPerPageOptions = [10, 20, 30];
 
   const {
     data: productsData,
     isLoading: productsLoading,
     isError: productsError,
-  } = useGetProducts(
+  } = useGetProducts({
     searchTerm,
-    selectedCategory?.value,
-    itemsPerPage,
-    currentSkip
-  );
+    category: selectedCategory?.value,
+    limit: itemsPerPage,
+    skip: currentSkip,
+    sortBy,
+    order,
+  });
 
   const {
     data: categoriesData,
@@ -57,6 +66,11 @@ const Dashboard: React.FC = () => {
 
   const handleItemsPerPageChange = (items: number) =>
     setItemsPerPage(items);
+
+  const handleSortChange = (sort: SortOption) => {
+    setSortBy(sort.sortBy);
+    setOrder(sort.order);
+  };
 
   if (productsLoading || categoriesLoading) {
     return (
@@ -126,6 +140,19 @@ const Dashboard: React.FC = () => {
           />
         </React.Fragment>
       )}
+      <BaseButton
+        label={t('dashboard.filterButton')}
+        onClick={() => setIsFilterDialogOpen(true)}
+        variant="white"
+        size="large"
+        iconStart={<AdjustmentsHorizontalIcon className="w-5 h-5" />}
+        className="fixed bottom-8 right-8"
+      />
+      <FilterDialog
+        isOpen={isFilterDialogOpen}
+        onClose={() => setIsFilterDialogOpen(false)}
+        onSortChange={handleSortChange}
+      />
     </div>
   );
 };
