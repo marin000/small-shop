@@ -7,7 +7,7 @@ interface ToastContextProps {
   showToast: (
     title: string,
     description: string,
-    type: 'default' | 'success' | 'warning' | 'error',
+    type: 'default' | 'success' | 'warning' | 'error' | 'info',
     toastOptions?: ToastOptions
   ) => void;
 }
