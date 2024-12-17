@@ -1,16 +1,17 @@
 import React from 'react';
 import { formatPrice } from '@/utils/helper';
-import { ProductDetails } from '@/types/product';
+import { Product } from '@/types/product';
 import BaseCard from '@/components/baseCard';
 import ProductDetail from '@/features/dashboard/components/productDetail';
 import { t } from 'i18next';
+import CartToggleButton from '../buttons/cartToggleButton';
 
 interface ProductDetailsTabProps {
-  productDetails: ProductDetails;
+  product: Product;
 }
 
 const ProductDetailsTab: React.FC<ProductDetailsTabProps> = ({
-  productDetails,
+  product,
 }) => {
   const {
     description,
@@ -25,17 +26,20 @@ const ProductDetailsTab: React.FC<ProductDetailsTabProps> = ({
     returnPolicy,
     warrantyInformation,
     shippingInformation,
-  } = productDetails;
+  } = product.details;
   return (
     <React.Fragment>
       <ProductDetail value={description} className="mb-4" />
-      <span className="bg-gray-300 p-1 rounded-md shadow-sm inline-block mb-2">
-        <ProductDetail
-          label="Price"
-          value={formatPrice(price)}
-          className="text-lg font-semibold text-gray-800"
-        />
-      </span>
+      <div className="flex items-center mt-4 mb-4">
+        <span className="bg-gray-300 p-1 mr-4 rounded-md shadow-sm inline-block">
+          <ProductDetail
+            label="Price"
+            value={formatPrice(price)}
+            className="text-lg font-semibold text-gray-800"
+          />
+        </span>
+        <CartToggleButton product={product} />
+      </div>
       <BaseCard>
         <ProductDetail label={t('dashboard.brand')} value={brand} />
         <ProductDetail

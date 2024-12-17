@@ -6,7 +6,7 @@ import BaseCard from '@/components/baseCard';
 import ProductDialog from '../dialogs/productDialog';
 import BaseThumbnail from '@/components/baseThumbnail';
 import { useTranslation } from 'react-i18next';
-import CartToggleButton from '../buttons/cartToggleButton';
+import CartToggleIcon from '../buttons/cartToggleIcon';
 
 const descriptionMaxLength = 100;
 
@@ -43,7 +43,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
               {formatPrice(price)}
             </span>
           </p>
-          <CartToggleButton product={product} />
+          <CartToggleIcon product={product} />
         </div>
 
         <p className="text-gray-600 text-sm mt-1">

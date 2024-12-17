@@ -22,7 +22,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
   const detailsTabLabel = t('dashboard.detailsTab');
   const reviewTabLabel = t('dashboard.reviewTab');
   const [activeTab, setActiveTab] = useState(detailsTabLabel);
-  const { title, thumbnail, details, reviews } = product;
+  const { title, thumbnail, reviews } = product;
 
   return (
     <BaseDialog isOpen={isOpen} onClose={onClose} title={title}>
@@ -39,7 +39,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
         />
         <div className="mt-4">
           {activeTab === detailsTabLabel && (
-            <ProductDetailsTab productDetails={details} />
+            <ProductDetailsTab product={product} />
           )}
           {activeTab === reviewTabLabel && (
             <ProductReviewsTab reviews={reviews} />
