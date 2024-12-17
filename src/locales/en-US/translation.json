@@ -7,7 +7,11 @@
   "toast": {
     "dashboard": {
       "priceWarningTitle": "Attention",
-      "priceWarningMsg": "The price filter is only applied on the current page."
+      "priceWarningMsg": "The price filter is only applied on the current page.",
+      "addedToCartTitle": "Product Added",
+      "addedToCartMsg": "The product has been successfully added to your cart.",
+      "removedToCartTitle": "Product Removed",
+      "removedToCartMsg": "The product has been successfully removed from your cart."
     }
   },
   "dashboard": {
@@ -30,7 +34,9 @@
     "sku": "SKU",
     "returnPolicy": "Return policy",
     "warrantyInformation": "Warranty Information",
-    "shippingInformation": "Shipping Information"
+    "shippingInformation": "Shipping Information",
+    "addToCart": "Add to cart",
+    "removeFromCart": "Remove from cart"
   },
   "filterSortDialog": {
     "titleSort": "Sort products",

@@ -6,6 +6,7 @@ import BaseCard from '@/components/baseCard';
 import ProductDialog from '../dialogs/productDialog';
 import BaseThumbnail from '@/components/baseThumbnail';
 import { useTranslation } from 'react-i18next';
+import CartToggleButton from '../buttons/cartToggleButton';
 
 const descriptionMaxLength = 100;
 
@@ -36,11 +37,15 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       <BaseCard className="relative hover:shadow-lg transition">
         <BaseThumbnail title={title} thumbnail={thumbnail} />
         <h2 className="text-lg font-semibold">{title}</h2>
-        <p className="text-gray-600 mt-1">
-          <span className="bg-gray-300 p-1 rounded-md shadow-sm inline-block mb-2">
-            {formatPrice(price)}
-          </span>
-        </p>
+        <div className="flex items-center mt-2 mb-2">
+          <p className="text-gray-600">
+            <span className="bg-gray-300 rounded-md shadow-sm inline-block p-1">
+              {formatPrice(price)}
+            </span>
+          </p>
+          <CartToggleButton product={product} />
+        </div>
+
         <p className="text-gray-600 text-sm mt-1">
           {truncatedDescription}
           <span
