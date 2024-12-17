@@ -18,6 +18,7 @@ import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import BaseButton from '@/components/baseButton';
 import FilterDialog from './components/dialogs/filterSortDialog';
 import { SortOption } from '@/types/sortFilter';
+import LoadFailed from '@/components/loadFailed';
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
@@ -91,11 +92,7 @@ const Dashboard: React.FC = () => {
   }
 
   if (productsError || categoriesError) {
-    return (
-      <div className="text-center text-red-500">
-        {t('dashboard.loadFailed')}
-      </div>
-    );
+    return <LoadFailed message={t('dashboard.loadFailed')} />;
   }
 
   const formattedProducts = formatProductData(

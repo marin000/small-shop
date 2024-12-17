@@ -39,5 +39,10 @@
     "priceInputMax": "Max",
     "applyFilters": "Apply filters",
     "resetButton": "Reset all"
+  },
+  "errorBoundary": {
+    "title": "Oops! Something went wrong.",
+    "defaultMesssage": "An unexpected error occurred.",
+    "timerNotice": "Redirecting to the home page in {{secondsLeft}} second"
   }
 }
