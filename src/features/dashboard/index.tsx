@@ -19,9 +19,11 @@ import BaseButton from '@/components/baseButton';
 import FilterDialog from './components/dialogs/filterSortDialog';
 import { SortOption } from '@/types/sortFilter';
 import LoadFailed from '@/components/loadFailed';
+import { useToastContext } from '@/providers/toastContext';
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation();
+  const { showToast } = useToastContext();
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryFormatted>({
       value: '',
@@ -81,6 +83,13 @@ const Dashboard: React.FC = () => {
   ) => {
     setMinPrice(min);
     setMaxPrice(max);
+    if (min || max) {
+      showToast(
+        t('toast.dashboard.priceWarningTitle'),
+        t('toast.dashboard.priceWarningMsg'),
+        'warning'
+      );
+    }
   };
 
   if (productsLoading || categoriesLoading) {

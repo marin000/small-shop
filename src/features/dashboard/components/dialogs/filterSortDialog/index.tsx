@@ -39,8 +39,12 @@ const FilterDialog: React.FC<FilterDialogProps> = ({
   };
 
   const handleApplyFilters = () => {
-    onSortChange(sortOption);
-    onPriceFilterChange(minPrice, maxPrice);
+    if (sortOption.sortBy !== defaultSortValue.sortBy) {
+      onSortChange(sortOption);
+    }
+    if (minPrice !== '' || maxPrice !== '') {
+      onPriceFilterChange(minPrice, maxPrice);
+    }
     onClose();
   };
 

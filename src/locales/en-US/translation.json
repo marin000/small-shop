@@ -4,6 +4,12 @@
     "paginationFirstPart": "Showing {{ start }} to ",
     "paginationSecondPart": "of {{ totalResults }} results"
   },
+  "toast": {
+    "dashboard": {
+      "priceWarningTitle": "Attention",
+      "priceWarningMsg": "The price filter is only applied on the current page."
+    }
+  },
   "dashboard": {
     "title": "Products",
     "loadFailed": "Failed to load products. Please try again later.",
