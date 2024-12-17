@@ -53,7 +53,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       />
       {searchTerm && (
         <XMarkIcon
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+          className="absolute right-6 sm:right-6 lg:right-[0.5rem] top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
           onClick={clearSearch}
           width={20}
           height={20}

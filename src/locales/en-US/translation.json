@@ -1,4 +1,9 @@
 {
+  "app": {
+    "name": "Grab & Go",
+    "home": "Home",
+    "cart": "Cart"
+  },
   "common": {
     "searchButtonLabel": "Search (3 characters minimum)",
     "paginationFirstPart": "Showing {{ start }} to ",
