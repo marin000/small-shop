@@ -32,6 +32,8 @@ const Dashboard: React.FC = () => {
   const [isFilterDialogOpen, setIsFilterDialogOpen] = useState(false);
   const [sortBy, setSortBy] = useState('');
   const [order, setOrder] = useState('');
+  const [minPrice, setMinPrice] = useState<number | ''>('');
+  const [maxPrice, setMaxPrice] = useState<number | ''>('');
   const itemsPerPageOptions = [10, 20, 30];
 
   const {
@@ -72,6 +74,14 @@ const Dashboard: React.FC = () => {
     setOrder(sort.order);
   };
 
+  const handlePriceFilterChange = (
+    min: number | '',
+    max: number | ''
+  ) => {
+    setMinPrice(min);
+    setMaxPrice(max);
+  };
+
   if (productsLoading || categoriesLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -95,7 +105,9 @@ const Dashboard: React.FC = () => {
   const filteredProducts = filterProducts(
     formattedProducts,
     searchTerm,
-    selectedCategory.value
+    selectedCategory.value,
+    minPrice,
+    maxPrice
   );
 
   const currentPage = calculateCurrentPage(currentSkip, itemsPerPage);
@@ -152,6 +164,7 @@ const Dashboard: React.FC = () => {
         isOpen={isFilterDialogOpen}
         onClose={() => setIsFilterDialogOpen(false)}
         onSortChange={handleSortChange}
+        onPriceFilterChange={handlePriceFilterChange}
       />
     </div>
   );

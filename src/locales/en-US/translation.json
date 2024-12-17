@@ -33,6 +33,11 @@
     "priceLowToHigh": "Low to high",
     "titleName": "Sort by name",
     "nameAsc": "Ascending",
-    "nameDesc": "Descending"
+    "nameDesc": "Descending",
+    "titlePriceRange": "Price range",
+    "priceInputMin": "Min",
+    "priceInputMax": "Max",
+    "applyFilters": "Apply filters",
+    "resetButton": "Reset all"
   }
 }

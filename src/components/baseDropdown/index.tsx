@@ -39,7 +39,7 @@ const BaseDropdown: React.FC<BaseDropdownProps> = ({
           className
         )}
       >
-        <MenuButton className="px-2 py-2 bg-white border rounded-md flex justify-between items-center w-72">
+        <MenuButton className="px-2 py-2 bg-white border rounded-md flex justify-between items-center w-80">
           <span>{selectedItem}</span>
           <ChevronDownIcon className="h-6 w-8 text-gray-500" />
         </MenuButton>

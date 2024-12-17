@@ -5,7 +5,7 @@ import React, { Ref } from 'react';
 type ButtonProps = {
   label?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  variant?: 'primary' | 'danger' | 'transparent' | 'white';
+  variant?: 'primary' | 'danger' | 'transparent' | 'white' | 'black';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
@@ -32,6 +32,7 @@ const BaseButton: React.FC<ButtonProps> = ({
     success: `text-white bg-green-500 hover:bg-green-700`,
     transparent: `bg-transparent`,
     white: `text-black bg-white border border-gray-300 hover:bg-gray-100`,
+    black: `text-white bg-black hover:bg-gray-900`,
   };
 
   const sizes = {

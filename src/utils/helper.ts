@@ -1,5 +1,6 @@
 import { Product } from '@/types/product';
 import { SortOption } from '@/types/sortFilter';
+import _ from 'lodash';
 
 /**
  * Truncates a given text to a specified maximum length.
@@ -48,23 +49,33 @@ export const formatDate = (dateString: string) => {
 };
 
 /**
- * Filters a list of products based on a search term and a selected category.
+ * Filters a list of products based on a search term and price range.
  *
  * @param products
  * @param searchTerm
  * @param selectedCategory
+ * @param minPrice
+ * @param maxPrice
  * @returns A filtered list of products.
  */
 export const filterProducts = (
   products: Product[],
   searchTerm: string,
-  selectedCategory: string
+  selectedCategory: string,
+  minPrice: number | '',
+  maxPrice: number | ''
 ): Product[] => {
-  return selectedCategory && searchTerm
-    ? products.filter((product) =>
-        product.title.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : products;
+  return products.filter((product) => {
+    const matchesSearchTerm =
+      (selectedCategory && searchTerm === '') ||
+      product.title.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesPriceRange =
+      (minPrice === '' || product.details.price >= minPrice) &&
+      (maxPrice === '' || product.details.price <= maxPrice);
+
+    return matchesSearchTerm && matchesPriceRange;
+  });
 };
 
 /**
@@ -83,4 +94,21 @@ export const getButtonVariant = (
   return activeSort.sortBy === sort && activeSort.order === order
     ? 'primary'
     : 'white';
+};
+
+/**
+ * Handles changes to a price input field by validating and updating the state.
+ * Converts the input value to a number and updates the corresponding state only if the value is valid.
+ *
+ * @param {string} value
+ * @param {React.Dispatch<React.SetStateAction<number | ''>>} setter
+ */
+export const handlePriceChange = (
+  value: string,
+  setter: React.Dispatch<React.SetStateAction<number | ''>>
+) => {
+  const parsedValue = _.toNumber(value);
+  if (!_.isNaN(parsedValue) || value === '') {
+    setter(parsedValue);
+  }
 };

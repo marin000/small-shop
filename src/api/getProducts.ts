@@ -21,9 +21,18 @@ const getProducts = async (productParams: GetProductsParams) => {
 };
 
 export const useGetProducts = (productParams: GetProductsParams) => {
-  const { searchTerm, category, limit, skip, sortBy } = productParams;
+  const { searchTerm, category, limit, skip, sortBy, order } =
+    productParams;
   return useQuery({
-    queryKey: ['products', searchTerm, category, limit, skip, sortBy],
+    queryKey: [
+      'products',
+      searchTerm,
+      category,
+      limit,
+      skip,
+      sortBy,
+      order,
+    ],
     queryFn: () => getProducts(productParams),
     placeholderData: keepPreviousData,
     enabled: true,

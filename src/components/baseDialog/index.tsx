@@ -30,7 +30,7 @@ const BaseDialog: React.FC<DialogProps> = ({
         <div className="bg-white rounded-lg max-w-xl w-full p-6 shadow-lg overflow-hidden">
           <div className="max-h-[80vh] overflow-y-auto">
             <DialogPanel
-              className="rounded-xl bg-white p-6"
+              className="rounded-xl bg-white p-2"
               onClick={(e) => e.stopPropagation()}
             >
               <CloseButton onClick={onClose} />
