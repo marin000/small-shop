@@ -19,6 +19,7 @@ const ProductDetailsTab: React.FC<ProductDetailsTabProps> = ({
     brand,
     category,
     stock,
+    minimumOrderQuantity,
     dimensions,
     weight,
     rating,
@@ -27,6 +28,7 @@ const ProductDetailsTab: React.FC<ProductDetailsTabProps> = ({
     warrantyInformation,
     shippingInformation,
   } = product.details;
+
   return (
     <React.Fragment>
       <ProductDetail value={description} className="mb-4" />
@@ -47,6 +49,10 @@ const ProductDetailsTab: React.FC<ProductDetailsTabProps> = ({
           value={category}
         />
         <ProductDetail label={t('dashboard.stock')} value={stock} />
+        <ProductDetail
+          label={t('dashboard.minimumOrderQuantity')}
+          value={minimumOrderQuantity}
+        />
         <ProductDetail
           label={t('dashboard.dimensions')}
           value={`${dimensions.width} x ${dimensions.height} x ${dimensions.depth} cm`}

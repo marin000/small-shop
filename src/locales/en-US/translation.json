@@ -33,6 +33,7 @@
     "brand": "Brand",
     "category": "Category",
     "stock": "Stock",
+    "minimumOrderQuantity": "Min order quantity",
     "dimensions": "Dimensions",
     "weight": "Weight",
     "rating": "Rating",
@@ -41,7 +42,8 @@
     "warrantyInformation": "Warranty Information",
     "shippingInformation": "Shipping Information",
     "addToCart": "Add to cart",
-    "removeFromCart": "Remove from cart"
+    "removeFromCart": "Remove from cart",
+    "outOfStock": "Minimum order quantity is {{minimumOrderQuantity}}, but only {{stock}} are available."
   },
   "filterSortDialog": {
     "titleSort": "Sort products",

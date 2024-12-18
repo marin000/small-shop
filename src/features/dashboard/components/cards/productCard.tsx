@@ -15,7 +15,13 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const {
-    details: { description, price, availabilityStatus },
+    details: {
+      description,
+      price,
+      availabilityStatus,
+      stock,
+      minimumOrderQuantity,
+    },
     thumbnail,
     title,
   } = product;
@@ -25,10 +31,15 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       ? truncateText(description, descriptionMaxLength)
       : description;
 
-  const statusClass =
-    availabilityStatus === 'Low Stock'
-      ? 'text-red-500'
-      : 'text-green-600';
+  const isOutOfStock = stock < minimumOrderQuantity;
+  const statusRed =
+    isOutOfStock || availabilityStatus === 'Low Stock';
+  const status = isOutOfStock
+    ? t('dashboard.outOfStock', {
+        minimumOrderQuantity,
+        stock,
+      })
+    : availabilityStatus;
 
   const toggleDialog = () => setIsDialogOpen(!isDialogOpen);
 
@@ -55,8 +66,12 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             {t('dashboard.readMore')}
           </span>
         </p>
-        <p className={`mt-2 text-sm ${statusClass}`}>
-          {availabilityStatus}
+        <p
+          className={`mt-2 text-sm w-2/3 ${
+            statusRed ? 'text-red-500' : 'text-green-600'
+          }`}
+        >
+          {status}
         </p>
 
         <BaseButton

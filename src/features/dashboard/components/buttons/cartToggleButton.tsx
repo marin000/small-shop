@@ -19,8 +19,10 @@ const CartToggleButton: React.FC<CartToggleButtonProps> = ({
 }) => {
   const { t } = useTranslation();
   const { handleCartToggle, isProductInCart } = useCartActions();
+  const { stock, minimumOrderQuantity } = product.details;
 
   const isInCart = isProductInCart(product);
+  const isOutOfStock = stock < minimumOrderQuantity;
 
   return (
     <React.Fragment>
@@ -35,6 +37,7 @@ const CartToggleButton: React.FC<CartToggleButtonProps> = ({
             variant="danger"
             iconEnd={<ShoppingCartIcon className="w-5 h-5" />}
             onClick={() => handleCartToggle(product)}
+            disabled={isOutOfStock}
           />
         </Tooltip>
       ) : (
@@ -48,6 +51,7 @@ const CartToggleButton: React.FC<CartToggleButtonProps> = ({
             variant="primary"
             iconEnd={<ShoppingCartIcon className="w-5 h-5" />}
             onClick={() => handleCartToggle(product)}
+            disabled={isOutOfStock}
           />
         </Tooltip>
       )}
