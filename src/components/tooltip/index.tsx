@@ -4,12 +4,14 @@ interface TooltipProps {
   children: ReactNode;
   text: string;
   position?: 'top' | 'right' | 'bottom' | 'left';
+  disabled?: boolean;
 }
 
 const Tooltip: React.FC<TooltipProps> = ({
   children,
   text,
   position = 'top',
+  disabled = false,
 }) => {
   const positionClasses = {
     top: 'bottom-full left-1/2 transform -translate-x-1/2 mb-2',
@@ -21,11 +23,13 @@ const Tooltip: React.FC<TooltipProps> = ({
   return (
     <div className="relative group inline-block">
       {children}
-      <span
-        className={`absolute z-10 p-2 text-sm text-white bg-black rounded-md opacity-0 group-hover:opacity-100 transition-opacity ${positionClasses[position]} max-w-xs whitespace-nowrap`}
-      >
-        {text}
-      </span>
+      {!disabled && (
+        <span
+          className={`absolute z-10 p-2 text-sm text-white bg-black rounded-md opacity-0 group-hover:opacity-100 transition-opacity ${positionClasses[position]} max-w-xs whitespace-nowrap`}
+        >
+          {text}
+        </span>
+      )}
     </div>
   );
 };

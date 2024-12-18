@@ -19,19 +19,21 @@ const PriceFilter: React.FC<PriceFilterProps> = ({
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value = e.target.value;
-    onPriceChange(value, String(maxPrice));
+    if (/^\d*$/.test(value)) onPriceChange(value, String(maxPrice));
   };
 
   const handleMaxPriceChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value = e.target.value;
-    onPriceChange(String(minPrice), value);
+    if (/^\d*$/.test(value)) onPriceChange(String(minPrice), value);
   };
 
   return (
     <div className="space-y-2 mt-4 mb-2">
-      <h4 className="text-lg font-semibold">Price Range</h4>
+      <h4 className="text-lg font-semibold">
+        {t('filterSortDialog.titlePriceRange')}
+      </h4>
       <div className="flex space-x-4">
         <BaseInput
           id="minPrice"

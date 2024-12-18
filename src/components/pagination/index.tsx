@@ -36,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({
   const end = Math.min(currentPage * itemsPerPage, totalResults);
 
   return (
-    <div className="flex justify-center items-center mt-8 mb-24">
+    <div className="flex justify-center items-center mt-8 mb-32">
       <div className="flex items-center space-x-2">
         <Button
           onClick={() => onPageChange(currentPage - 1)}
@@ -46,19 +46,21 @@ const Pagination: React.FC<PaginationProps> = ({
           <ChevronLeftIcon className="h-5 w-5 text-gray-700" />
         </Button>
 
-        {paginationRange.map((pageNum) => (
-          <Button
-            key={pageNum}
-            onClick={() => onPageChange(pageNum)}
-            className={`px-4 py-2 rounded-lg ${
-              pageNum === currentPage
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-200'
-            }`}
-          >
-            {pageNum}
-          </Button>
-        ))}
+        <div className="hidden sm:flex">
+          {paginationRange.map((pageNum) => (
+            <Button
+              key={pageNum}
+              onClick={() => onPageChange(pageNum)}
+              className={`px-4 py-2 rounded-lg ${
+                pageNum === currentPage
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-200'
+              }`}
+            >
+              {pageNum}
+            </Button>
+          ))}
+        </div>
 
         <Button
           onClick={() => onPageChange(currentPage + 1)}
@@ -69,8 +71,8 @@ const Pagination: React.FC<PaginationProps> = ({
         </Button>
       </div>
 
-      <div className="flex items-center space-x-4 ml-4">
-        <span className="text-gray-700 flex items-center space-x-1">
+      <div className="flex flex-wrap items-center space-x-4 ml-4">
+        <span className="text-gray-700 flex flex-wrap items-center space-x-1">
           <span>
             {t('common.paginationFirstPart', {
               start,
@@ -81,7 +83,7 @@ const Pagination: React.FC<PaginationProps> = ({
             options={itemsPerPageOptions}
             onOptionSelect={onItemsPerPageChange}
           />
-          <span>
+          <span className="block sm:inline w-full sm:w-auto">
             {t('common.paginationSecondPart', {
               totalResults,
             })}

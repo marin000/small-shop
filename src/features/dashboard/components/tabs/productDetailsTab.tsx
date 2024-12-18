@@ -38,7 +38,7 @@ const ProductDetailsTab: React.FC<ProductDetailsTabProps> = ({
             className="text-lg font-semibold text-gray-800"
           />
         </span>
-        <CartToggleButton product={product} />
+        <CartToggleButton product={product} tooltipDisabled={true} />
       </div>
       <BaseCard>
         <ProductDetail label={t('dashboard.brand')} value={brand} />
