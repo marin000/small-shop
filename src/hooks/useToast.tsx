@@ -8,17 +8,10 @@ const useToast = () => {
     type: TypeOptions,
     toastOptions?: ToastOptions
   ) => {
-    toast(
-      <BaseToast
-        title={title}
-        description={description}
-        type={type}
-      />,
-      {
-        type,
-        ...toastOptions,
-      } as ToastOptions
-    );
+    toast(<BaseToast title={title} description={description} />, {
+      type,
+      ...toastOptions,
+    } as ToastOptions);
   };
 
   return { showToast };

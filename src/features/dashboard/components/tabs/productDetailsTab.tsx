@@ -4,7 +4,6 @@ import { Product } from '@/types/product';
 import BaseCard from '@/components/baseCard';
 import ProductDetail from '@/features/dashboard/components/productDetail';
 import { t } from 'i18next';
-import CartToggleButton from '../buttons/cartToggleButton';
 
 interface ProductDetailsTabProps {
   product: Product;
@@ -40,7 +39,6 @@ const ProductDetailsTab: React.FC<ProductDetailsTabProps> = ({
             className="text-lg font-semibold text-gray-800"
           />
         </span>
-        <CartToggleButton product={product} tooltipDisabled={true} />
       </div>
       <BaseCard>
         <ProductDetail label={t('dashboard.brand')} value={brand} />

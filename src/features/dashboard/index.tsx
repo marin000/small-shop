@@ -16,7 +16,7 @@ import { filterProducts } from '@/utils/helper';
 import { CategoryFormatted } from '@/types/categories';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import BaseButton from '@/components/baseButton';
-import FilterDialog from './components/dialogs/filterSortDialog';
+import FilterDialog from './components/filterSortDialog';
 import { SortOption } from '@/types/sortFilter';
 import LoadFailed from '@/components/loadFailed';
 import { useToastContext } from '@/providers/toastContext';
@@ -133,7 +133,7 @@ const Dashboard: React.FC = () => {
         onSearchChange={handleOnSearchChange}
         onCategoryChange={handleOnCategoryChange}
       />
-      <h1 className="text-2xl font-bold text-center mb-6">
+      <h1 className="text-2xl text-center mb-6">
         {t('dashboard.title')}
       </h1>
       {filteredProducts.length === 0 ? (

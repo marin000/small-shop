@@ -6,18 +6,20 @@ import { useTranslation } from 'react-i18next';
 
 interface SidebarProps {
   isOpen: boolean;
+  cartItemsLength: number;
   toggleSidebar: () => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
+  cartItemsLength,
   toggleSidebar,
 }) => {
   const { t } = useTranslation();
 
   return (
     <div
-      className={`fixed top-0 left-0 h-full w-96 bg-black text-white z-50 transform transition-transform duration-300 ${
+      className={`fixed top-0 left-0 h-full w-80 bg-black text-white z-50 transform transition-transform duration-300 ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
@@ -30,8 +32,17 @@ const Sidebar: React.FC<SidebarProps> = ({
         <Link to="/" className="text-2xl" onClick={toggleSidebar}>
           {t('app.home')}
         </Link>
-        <Link to="/cart" className="text-2xl" onClick={toggleSidebar}>
+        <Link
+          to="/cart"
+          className="text-2xl relative"
+          onClick={toggleSidebar}
+        >
           {t('app.cart')}
+          {cartItemsLength > 0 && (
+            <span className="absolute -top-2 -right-8 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              {cartItemsLength}
+            </span>
+          )}
         </Link>
       </nav>
     </div>

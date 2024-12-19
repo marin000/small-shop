@@ -112,3 +112,10 @@ export const handlePriceChange = (
     setter(parsedValue);
   }
 };
+
+export const minQuantityReached = (
+  itemQuantity: number,
+  minQuantity: number
+) => {
+  return itemQuantity === 1 || itemQuantity === minQuantity;
+};

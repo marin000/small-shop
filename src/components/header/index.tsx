@@ -9,15 +9,17 @@ import logo from '@/assets/images/logo.png';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@headlessui/react';
 import Sidebar from './sidebar';
+import useCartStore from '@/store/cartStore';
 
 const Header = () => {
   const { t } = useTranslation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { cartItems } = useCartStore((state) => state);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
-    <header className="z-40 py-4 px-12 bg-black flex items-center justify-between">
+    <header className="z-40 py-4 px-4 bg-black flex items-center justify-between">
       <Button
         className="md:hidden text-white"
         onClick={toggleSidebar}
@@ -25,7 +27,10 @@ const Header = () => {
         <Bars3Icon className="w-8 h-8" />
       </Button>
 
-      <Link to="/" className="hidden md:flex items-center space-x-4">
+      <Link
+        to="/"
+        className="hidden md:flex items-center space-x-4 ml-4"
+      >
         <HomeIcon className="w-8 h-8 text-white" />
       </Link>
       <Link
@@ -37,10 +42,22 @@ const Header = () => {
           {t('app.name')}
         </span>
       </Link>
-      <Link to="/cart" className="text-white hidden md:flex">
+      <Link
+        to="/cart"
+        className="text-white hidden md:flex mr-4 relative"
+      >
         <ShoppingCartIcon className="w-8 h-8" />
+        {cartItems.length > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+            {cartItems.length}
+          </span>
+        )}
       </Link>
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <Sidebar
+        isOpen={isSidebarOpen}
+        cartItemsLength={cartItems.length}
+        toggleSidebar={toggleSidebar}
+      />
     </header>
   );
 };

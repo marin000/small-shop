@@ -16,7 +16,7 @@ AppLayout.Header = function AppHeader({
 
 AppLayout.Main = function AppMain({ children }: PropsWithChildren) {
   return (
-    <main className="flex flex-col flex-1 w-full py-4 px-12 overflow-auto bg-spring-wood">
+    <main className="flex flex-col flex-1 w-full py-4 px-4 overflow-auto bg-spring-wood">
       {children}
     </main>
   );

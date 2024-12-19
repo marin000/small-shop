@@ -29,7 +29,7 @@ const ToastProvider: React.FC<ToastProviderProps> = ({
     <ToastContext.Provider value={{ showToast }}>
       {children}
       <ToastContainer
-        autoClose={5000}
+        autoClose={3000}
         closeButton={false}
         closeOnClick
         draggable={false}

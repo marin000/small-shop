@@ -16,7 +16,10 @@ const BaseThumbnail: React.FC<BaseThumbnailProps> = ({
     <img
       src={thumbnail}
       alt={title}
-      className={clsx('w-full h-48 object-cover rounded', className)}
+      className={clsx(
+        'w-full h-48 object-contain rounded',
+        className
+      )}
     />
   );
 };
