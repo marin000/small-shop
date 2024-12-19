@@ -32,7 +32,7 @@ const ProductDetailsTab: React.FC<ProductDetailsTabProps> = ({
     <React.Fragment>
       <ProductDetail value={description} className="mb-4" />
       <div className="flex items-center mt-4 mb-4">
-        <span className="bg-gray-300 p-1 mr-4 rounded-md shadow-sm inline-block">
+        <span className="bg-gray-300 p-2 mr-4 rounded-full shadow-sm inline-block">
           <ProductDetail
             label="Price"
             value={formatPrice(price)}

@@ -5,14 +5,29 @@ import { devtools, persist } from 'zustand/middleware';
 
 const addProductToCart = (
   state: CartStoreState,
-  product: Product
+  product: Product,
+  quantity: number
 ) => {
-  return {
-    cartItems: [
-      ...state.cartItems,
-      { ...product, quantity: product.details.minimumOrderQuantity },
-    ],
-  };
+  const existingProduct = state.cartItems.find(
+    (item) => item.id === product.id
+  );
+
+  if (existingProduct) {
+    return {
+      cartItems: state.cartItems.map((item) =>
+        item.id === product.id
+          ? { ...item, quantity: Math.max(1, quantity) }
+          : item
+      ),
+    };
+  } else {
+    return {
+      cartItems: [
+        ...state.cartItems,
+        { ...product, quantity: Math.max(1, quantity) },
+      ],
+    };
+  }
 };
 
 const updateProductQuantity = (
@@ -51,8 +66,8 @@ const useCartStore = create<CartStoreState>()(
     persist(
       (set) => ({
         cartItems: [],
-        addToCart: (product: Product) =>
-          set((state) => addProductToCart(state, product)),
+        addToCart: (product: Product, quantity: number) =>
+          set((state) => addProductToCart(state, product, quantity)),
         updateCartItem: (productId: number, quantity: number) =>
           set((state) =>
             updateProductQuantity(state, productId, quantity)

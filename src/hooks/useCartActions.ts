@@ -7,24 +7,24 @@ const useCartActions = () => {
   const { t } = useTranslation();
   const { showToast } = useToastContext();
   const addToCart = useCartStore((state) => state.addToCart);
-  const removeFromCart = useCartStore(
-    (state) => state.removeFromCart
-  );
+
   const cart = useCartStore((state) => state.cartItems);
 
   const isProductInCart = (product: Product) =>
     cart.some((item) => item.id === product.id);
 
-  const handleCartToggle = (product: Product) => {
+  const getProductFromCart = (product: Product) =>
+    cart.find((item) => item.id === product.id);
+
+  const addProductToCart = (product: Product, quantity: number) => {
     if (isProductInCart(product)) {
-      removeFromCart(product.id);
       showToast(
-        t('toast.dashboard.removedToCartTitle'),
-        t('toast.dashboard.removedToCartMsg'),
+        t('toast.dashboard.updateCartTitle'),
+        t('toast.dashboard.updateCartMsg'),
         'info'
       );
     } else {
-      addToCart(product);
+      addToCart(product, quantity);
       showToast(
         t('toast.dashboard.addedToCartTitle'),
         t('toast.dashboard.addedToCartMsg'),
@@ -33,7 +33,7 @@ const useCartActions = () => {
     }
   };
 
-  return { handleCartToggle, isProductInCart };
+  return { addProductToCart, getProductFromCart, isProductInCart };
 };
 
 export default useCartActions;

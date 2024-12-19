@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Product } from '@/types/product';
 import { formatPrice, truncateText } from '@/utils/helper';
-import BaseButton from '@/components/baseButton';
 import BaseCard from '@/components/baseCard';
-import ProductDialog from '@/features/common/productDialog';
 import BaseThumbnail from '@/components/baseThumbnail';
 import { useTranslation } from 'react-i18next';
-import CartToggleButton from '../buttons/cartToggleButton';
+import CartAddButton from '../cartAddButton';
+import DetailsLink from '@/features/shared/detailsLink';
+import ProductDialog from '@/features/shared/productDialog';
 
 const descriptionMaxLength = 100;
 
@@ -48,35 +48,33 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       <BaseCard className="relative hover:shadow-lg transition">
         <BaseThumbnail title={title} thumbnail={thumbnail} />
         <h2 className="text-lg font-semibold">{title}</h2>
-        <div className="flex items-center mt-2 mb-2">
+        <div className="flex items-center mt-4 mb-4">
           <p className="text-gray-600">
-            <span className="bg-gray-300 rounded-md shadow-sm inline-block p-1 mr-4">
+            <span className="bg-gray-300 rounded-full shadow-sm inline-block p-1 mr-4">
               {formatPrice(price)}
             </span>
           </p>
-          <CartToggleButton product={product} hasLabel={false} />
+          <CartAddButton product={product} />
         </div>
 
         <p className="text-gray-600 text-sm mt-1">
           {truncatedDescription}
           <span
-            className="text-gray-500 mt-1 block cursor-pointer"
+            className="text-gray-500 mt-1 mb-6 block cursor-pointer"
             onClick={toggleDialog}
           >
             {t('dashboard.readMore')}
           </span>
         </p>
         <p
-          className={`mt-2 text-sm w-2/3 ${
+          className={`absolute bottom-4 left 4 text-sm ${
             statusRed ? 'text-red-500' : 'text-green-600'
           }`}
         >
           {status}
         </p>
 
-        <BaseButton
-          label={t('dashboard.detailsButton')}
-          size="small"
+        <DetailsLink
           onClick={toggleDialog}
           className="absolute bottom-4 right-4"
         />

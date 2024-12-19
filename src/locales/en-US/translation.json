@@ -16,7 +16,13 @@
       "addedToCartTitle": "Product Added",
       "addedToCartMsg": "The product has been successfully added to your cart.",
       "removedToCartTitle": "Product Removed",
-      "removedToCartMsg": "The product has been successfully removed from your cart."
+      "removedToCartMsg": "The product has been successfully removed from your cart.",
+      "updateCartTitle": "Product updated",
+      "updateCartMsg": "The product has been successfully updated.",
+      "minQuantityTitle": "Minimum quantity",
+      "minQuantityMsg": "{{quantity}} is minimum quantity for this product.",
+      "maxQuantityTitle": "Maximum quantity",
+      "maxQuantityMsg": "There is no more items in the stock."
     }
   },
   "dashboard": {
@@ -43,7 +49,7 @@
     "shippingInformation": "Shipping Information",
     "addToCart": "Add to cart",
     "removeFromCart": "Remove from cart",
-    "outOfStock": "Minimum order quantity is {{minimumOrderQuantity}}, but only {{stock}} are available."
+    "outOfStock": "Out of stock"
   },
   "filterSortDialog": {
     "titleSort": "Sort products",
@@ -63,5 +69,17 @@
     "title": "Oops! Something went wrong.",
     "defaultMesssage": "An unexpected error occurred.",
     "timerNotice": "Redirecting to the home page in {{secondsLeft}} second"
+  },
+  "cart": {
+    "cartEmpty": "Your cart is empty.",
+    "goShopping": "Go back to shopping.",
+    "title": "Your Cart",
+    "minimumOrder": "Minimum order: ",
+    "totalPrice": "Total price: ",
+    "removeFromCart": "Remove from cart",
+    "stockItemsLeft": "Stock: {{itemsLeft}} left",
+    "cartTotalPrice": "Total: ",
+    "checkout": "Checkout",
+    "buttonBack": "Back to shop"
   }
 }
