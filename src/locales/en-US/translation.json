@@ -23,6 +23,12 @@
       "minQuantityMsg": "{{quantity}} is minimum quantity for this product.",
       "maxQuantityTitle": "Maximum quantity",
       "maxQuantityMsg": "There is no more items in the stock."
+    },
+    "login": {
+      "invalidCredentialsTitle": "Login failed",
+      "invalidCredentialsMsg": "The submitted username and/or password are incorrect.",
+      "serverErrorTitle": "Something Went Wrong",
+      "serverErrorMsg": "Please try again later. If the problem persists, contact support."
     }
   },
   "dashboard": {
@@ -81,5 +87,21 @@
     "cartTotalPrice": "Total: ",
     "checkout": "Checkout",
     "buttonBack": "Back to shop"
+  },
+  "login": {
+    "title": "Login",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "usernamePlaceholder": "Username",
+    "passwordPlaceholder": "Password",
+    "submitButton": "Submit",
+    "noAccount": "You don't have an account?",
+    "registerLink": "Register here"
+  },
+  "validation": {
+    "required": "This field cannot be empty",
+    "usernameMax": "Email cannot exceed 320 characters",
+    "passwordMin": "Password must be at least 8 characters long",
+    "passwordMax": "Password cannot exceed 128 characters"
   }
 }

@@ -16,4 +16,5 @@ export const API_ROUTES = {
   ) =>
     `/products/category/${category}/?limit=${limit}&skip=${skip}&sortBy=${sortBy}&order=${order}`,
   getCategories: '/products/categories',
+  login: '/auth/login',
 };
