@@ -5,6 +5,7 @@ import React, { Ref } from 'react';
 type ButtonProps = {
   label?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  type?: 'button' | 'submit' | 'reset';
   variant?:
     | 'primary'
     | 'danger'
@@ -23,6 +24,7 @@ type ButtonProps = {
 const BaseButton: React.FC<ButtonProps> = ({
   label,
   onClick,
+  type = 'button',
   disabled = false,
   variant = 'primary',
   size = 'medium',
@@ -50,6 +52,7 @@ const BaseButton: React.FC<ButtonProps> = ({
   return (
     <Button
       ref={ref}
+      type={type}
       aria-label={label}
       onClick={onClick}
       disabled={disabled}

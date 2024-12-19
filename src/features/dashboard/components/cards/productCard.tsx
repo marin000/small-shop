@@ -45,16 +45,16 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
   return (
     <React.Fragment>
-      <BaseCard className="relative hover:shadow-lg transition">
+      <BaseCard className="relative hover:shadow-lg transition min-w-72">
         <BaseThumbnail title={title} thumbnail={thumbnail} />
         <h2 className="text-lg font-semibold">{title}</h2>
-        <div className="flex items-center mt-4 mb-4">
+        <div className="flex items-center mt-4 mb-4 justify-between">
           <p className="text-gray-600">
             <span className="bg-gray-300 rounded-full shadow-sm inline-block p-1 mr-4">
               {formatPrice(price)}
             </span>
           </p>
-          <CartAddButton product={product} />
+          <CartAddButton product={product} className="ml-auto" />
         </div>
 
         <p className="text-gray-600 text-sm mt-1">
@@ -67,7 +67,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           </span>
         </p>
         <p
-          className={`absolute bottom-4 left 4 text-sm ${
+          className={`absolute bottom-4 left-4 text-sm ${
             statusRed ? 'text-red-500' : 'text-green-600'
           }`}
         >

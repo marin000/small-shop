@@ -5,13 +5,16 @@ import { Product } from '@/types/product';
 import BaseButton from '@/components/baseButton';
 import { useToastContext } from '@/providers/toastContext';
 import QuantityAdjuster from '@/features/shared/quantityAdjuster';
+import clsx from 'clsx';
 
 interface CartToggleButtonProps {
   product: Product;
+  className?: string;
 }
 
 const CartAddButton: React.FC<CartToggleButtonProps> = ({
   product,
+  className,
 }) => {
   const { t } = useTranslation();
   const { showToast } = useToastContext();
@@ -71,7 +74,7 @@ const CartAddButton: React.FC<CartToggleButtonProps> = ({
   };
 
   return (
-    <React.Fragment>
+    <div className={clsx('flex items-center ', className)}>
       {!isOutOfStock && (
         <React.Fragment>
           <BaseButton
@@ -80,7 +83,7 @@ const CartAddButton: React.FC<CartToggleButtonProps> = ({
             size="small"
             onClick={handleAddToCart}
             disabled={isOutOfStock}
-            className="mr-2"
+            className="mr-2 whitespace-nowrap"
           />
           <QuantityAdjuster
             quantity={quantity}
@@ -91,7 +94,7 @@ const CartAddButton: React.FC<CartToggleButtonProps> = ({
           />
         </React.Fragment>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

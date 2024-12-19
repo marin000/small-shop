@@ -16,8 +16,8 @@ import { filterProducts } from '@/utils/helper';
 import { CategoryFormatted } from '@/types/categories';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import BaseButton from '@/components/baseButton';
-import FilterDialog from './components/filterSortDialog';
 import { SortOption } from '@/types/sortFilter';
+import FilterDialog from './components/filterSortDialog';
 import LoadFailed from '@/components/loadFailed';
 import { useToastContext } from '@/providers/toastContext';
 
@@ -142,7 +142,7 @@ const Dashboard: React.FC = () => {
         </div>
       ) : (
         <React.Fragment>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProducts.map((product: Product) => (
               <ProductCard key={product.id} product={product} />
             ))}
