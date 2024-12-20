@@ -65,7 +65,7 @@ const CartItemCard: React.FC<CartItemProps> = ({
         <BaseThumbnail
           title={title}
           thumbnail={thumbnail}
-          className="h-24 w-24 sm:h-32 sm:w-32 object-cover rounded"
+          className="h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 object-contain sm:object-cover md:object-cover rounded"
         />
         <CartItemTitle title={title} price={price} />
         <QuantityAdjuster

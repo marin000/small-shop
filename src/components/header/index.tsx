@@ -55,7 +55,9 @@ const Header = () => {
             </span>
           )}
         </Link>
-        <HeaderProfileMenu />
+        <div className="hidden md:block">
+          <HeaderProfileMenu />
+        </div>
       </div>
       <Sidebar
         isOpen={isSidebarOpen}
