@@ -1,31 +1,20 @@
 import React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { useTranslation } from 'react-i18next';
 import BaseButton from '@/components/baseButton';
 import BaseInput from '@/components/baseInput';
 import { LoginFormData } from '@/types/login';
 import { useLoginRequest } from '@/api/login';
+import { loginFormSchema } from './validation/loginFormSchema';
 
 const Login: React.FC = () => {
   const { t } = useTranslation();
   const { mutate: loginMutation, isPending: loading } =
     useLoginRequest();
 
-  const loginFormSchema = z.object({
-    username: z
-      .string()
-      .min(1, { message: t('validation.required') })
-      .max(150, { message: t('validation.usernameMax') }),
-    password: z
-      .string()
-      .min(8, { message: t('validation.passwordMin') })
-      .max(128, { message: t('validation.passwordMax') }),
-  });
-
   const formOptions = {
-    resolver: zodResolver(loginFormSchema),
+    resolver: zodResolver(loginFormSchema(t)),
     mode: 'onChange' as const,
   };
 
@@ -36,7 +25,6 @@ const Login: React.FC = () => {
   } = useForm<LoginFormData>(formOptions);
 
   const onSubmit: SubmitHandler<LoginFormData> = (data) => {
-    console.log(data);
     loginMutation(data);
   };
 
