@@ -119,3 +119,9 @@ export const minQuantityReached = (
 ) => {
   return itemQuantity === 1 || itemQuantity === minQuantity;
 };
+
+export const formatCardNumber = (cardNumber: string) => {
+  return cardNumber
+    .replace(/\D/g, '')
+    .replace(/(\d{4})(?=\d)/g, '$1 ');
+};

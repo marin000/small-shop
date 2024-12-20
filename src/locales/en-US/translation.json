@@ -34,6 +34,10 @@
     "general": {
       "serverErrorTitle": "Something Went Wrong",
       "serverErrorMsg": "Please try again later. If the problem persists, contact support."
+    },
+    "checkout": {
+      "noUserTitle": "User Not Found",
+      "noUserMsg": "It seems you're not logged in or your session has expired. Please log in again to continue."
     }
   },
   "dashboard": {
@@ -91,7 +95,8 @@
     "stockItemsLeft": "Stock: {{itemsLeft}} left",
     "cartTotalPrice": "Total: ",
     "checkout": "Checkout",
-    "buttonBack": "Back to shop"
+    "buttonBack": "Back to shop",
+    "loginButton": "Login to continue"
   },
   "login": {
     "title": "Login",
@@ -107,7 +112,10 @@
     "required": "This field cannot be empty",
     "usernameMax": "Email cannot exceed 320 characters",
     "passwordMin": "Password must be at least 8 characters long",
-    "passwordMax": "Password cannot exceed 128 characters"
+    "passwordMax": "Password cannot exceed 128 characters",
+    "cvcFormat": "CVC must be a 3- or 4-digit number.",
+    "cvcMin": "CVC must be at least 3 digits long.",
+    "cvcMax": "CVC must not exceed 4 digits."
   },
   "profile": {
     "title": "Profile Information",
@@ -115,5 +123,22 @@
     "firstName": "First name",
     "lastName": "Last name",
     "email": "Email"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "paymentDetails": "Payment details",
+    "addressDetails": "Address details",
+    "loadFailed": "Failed to load your data. Please try again later.",
+    "address": "Address",
+    "city": "City",
+    "state": "State",
+    "postalCode": "PostalCode",
+    "country": "Country",
+    "cardNumber": "Card number",
+    "cardExpire": "Card expire",
+    "cvc": "CVC",
+    "payButton": "PAY",
+    "paymentSuccessTitle": "Transaction completed successfully!",
+    "paymentSuccessMsg": "All details have been sent to your email."
   }
 }

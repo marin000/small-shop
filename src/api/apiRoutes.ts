@@ -18,4 +18,5 @@ export const API_ROUTES = {
   getCategories: '/products/categories',
   login: '/auth/login',
   refreshToken: '/auth/refresh',
+  getUser: (id: number) => `/users/${id}`,
 };

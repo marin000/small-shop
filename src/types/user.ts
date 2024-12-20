@@ -1,4 +1,4 @@
-interface UserAddress {
+export interface UserAddress {
   address: string;
   city: string;
   state: string;
@@ -6,7 +6,7 @@ interface UserAddress {
   country: string;
 }
 
-interface UserBank {
+export interface UserBank {
   cardExpire: string;
   cardNumber: string;
 }
