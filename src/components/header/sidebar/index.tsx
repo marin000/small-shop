@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { Button } from '@headlessui/react';
 import { useTranslation } from 'react-i18next';
+import SidebarLink from './sidebarLink';
+import UserSection from './userSection';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -29,21 +30,19 @@ const Sidebar: React.FC<SidebarProps> = ({
         </Button>
       </div>
       <nav className="flex flex-col items-center space-y-6 pt-8">
-        <Link to="/" className="text-2xl" onClick={toggleSidebar}>
-          {t('app.home')}
-        </Link>
-        <Link
-          to="/cart"
-          className="text-2xl relative"
+        <SidebarLink
+          to="/"
+          label={t('app.home')}
           onClick={toggleSidebar}
-        >
-          {t('app.cart')}
-          {cartItemsLength > 0 && (
-            <span className="absolute -top-2 -right-8 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-              {cartItemsLength}
-            </span>
-          )}
-        </Link>
+        />
+        <SidebarLink
+          to="/cart"
+          label={t('app.cart')}
+          onClick={toggleSidebar}
+          hasBadge={cartItemsLength > 0}
+          badgeContent={cartItemsLength}
+        />
+        <UserSection toggleSidebar={toggleSidebar} />
       </nav>
     </div>
   );
