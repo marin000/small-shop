@@ -68,9 +68,11 @@ axiosInstance.interceptors.response.use(
         const refreshToken: string | null = getRefreshToken();
         if (!refreshToken) return handleLogout(error);
 
+        const expiresInMins = 7 * 24 * 60; // 7 days
         const response: AxiosResponse<RefreshTokenResponse> =
           await axiosInstance.post(API_ROUTES.refreshToken, {
             refreshToken,
+            expiresInMins,
           });
 
         if (response.status === 200) {

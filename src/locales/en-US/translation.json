@@ -2,7 +2,10 @@
   "app": {
     "name": "Grab & Go",
     "home": "Home",
-    "cart": "Cart"
+    "cart": "Cart",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile"
   },
   "common": {
     "searchButtonLabel": "Search (3 characters minimum)",
