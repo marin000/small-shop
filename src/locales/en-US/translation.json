@@ -108,5 +108,12 @@
     "usernameMax": "Email cannot exceed 320 characters",
     "passwordMin": "Password must be at least 8 characters long",
     "passwordMax": "Password cannot exceed 128 characters"
+  },
+  "profile": {
+    "title": "Profile Information",
+    "username": "Username",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email"
   }
 }
