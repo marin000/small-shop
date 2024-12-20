@@ -7,15 +7,17 @@ import { useNavigate } from 'react-router-dom';
 import { API_ROUTES } from './apiRoutes';
 import axiosInstance from './axiosInstance';
 import { ApiResponse } from '@/types/global';
-import { setToken } from '@/services/tokenService';
+import { setTokens } from '@/services/tokenService';
 
 interface LoginResponse {
   accessToken: string;
+  refreshToken: string;
 }
 
 const loginRequest = async (data: LoginFormData) => {
   const { username, password } = data;
-  const postData = { username, password };
+  const expiresInMins = 7 * 24 * 60; // 7 days
+  const postData = { username, password, expiresInMins };
   return await axiosInstance.post(API_ROUTES.login, postData);
 };
 
@@ -27,10 +29,8 @@ export const useLoginRequest = () => {
   return useMutation({
     mutationFn: loginRequest,
     onSuccess: (data: ApiResponse<LoginResponse>) => {
-      console.log(data);
-
-      const { accessToken } = data.data;
-      setToken(accessToken);
+      const { accessToken, refreshToken } = data.data;
+      setTokens(accessToken, refreshToken);
       navigate('/');
     },
     onError: (error: AxiosError) => {
@@ -42,8 +42,8 @@ export const useLoginRequest = () => {
         );
       } else {
         showToast(
-          t('toast.login.serverErrorTitle'),
-          t('toast.login.serverErrorMsg'),
+          t('toast.general.serverErrorTitle'),
+          t('toast.general.serverErrorMsg'),
           'error'
         );
       }

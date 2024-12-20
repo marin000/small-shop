@@ -1,22 +1,32 @@
+import Cookies from 'js-cookie';
+
 const getToken = (): string | null => {
-  return localStorage.getItem('token');
+  return Cookies.get('token') || null;
 };
 
 const getRefreshToken = (): string | null => {
-  return localStorage.getItem('refreshToken');
+  return Cookies.get('refreshToken') || null;
 };
 
 const setToken = (token: string): void => {
-  localStorage.setItem('token', token);
+  Cookies.set('token', token, { expires: 7 });
 };
 
 const setRefreshToken = (refreshToken: string): void => {
-  localStorage.setItem('refreshToken', refreshToken);
+  Cookies.set('refreshToken', refreshToken, { expires: 7 });
+};
+
+const setTokens = (
+  accessToken: string,
+  refreshToken: string
+): void => {
+  setToken(accessToken);
+  setRefreshToken(refreshToken);
 };
 
 const clearTokens = (): void => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('refreshToken');
+  Cookies.remove('token');
+  Cookies.remove('refreshToken');
 };
 
 export {
@@ -25,4 +35,5 @@ export {
   setToken,
   setRefreshToken,
   clearTokens,
+  setTokens,
 };
