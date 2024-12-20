@@ -1,15 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@headlessui/react';
-import useUserStore from '@/store/userStore';
 import { useLogout } from '@/hooks/useLogout';
 import SidebarLink from './sidebarLink';
+import useUserActions from '@/hooks/useUserActions';
 
 const UserSection: React.FC<{ toggleSidebar: () => void }> = ({
   toggleSidebar,
 }) => {
   const { t } = useTranslation();
-  const { user } = useUserStore((state) => state);
+  const { isUserLoggedIn } = useUserActions();
   const logout = useLogout();
 
   const handleLogout = () => {
@@ -19,7 +19,7 @@ const UserSection: React.FC<{ toggleSidebar: () => void }> = ({
 
   return (
     <div className="flex flex-col items-center space-y-6 pt-2">
-      {user.id ? (
+      {isUserLoggedIn() ? (
         <React.Fragment>
           <SidebarLink
             to="/profile"

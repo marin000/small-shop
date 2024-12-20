@@ -5,22 +5,19 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import CartItemCard from './components/cards/cartItemCard';
 import CartFooter from './components/cartFooter';
+import useCartActions from '@/hooks/useCartActions';
 
 const Cart: React.FC = () => {
   const { t } = useTranslation();
   const { cartItems, removeFromCart, updateCartItem } = useCartStore(
     (state) => state
   );
-
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.details.price * item.quantity,
-    0
-  );
+  const { getTotalPrice } = useCartActions();
 
   const cartEmpty = cartItems.length === 0;
 
   return (
-    <div className="max-w-4xl mx-auto flex flex-col min-h-screen">
+    <div className="max-w-4xl mx-auto flex flex-col">
       <h1 className="text-2xl mb-4">{t('cart.title')}</h1>
 
       <div className="flex-1 pb-32 w-full">
@@ -44,7 +41,7 @@ const Cart: React.FC = () => {
           ))
         )}
       </div>
-      {!cartEmpty && <CartFooter totalPrice={totalPrice} />}
+      {!cartEmpty && <CartFooter totalPrice={getTotalPrice()} />}
     </div>
   );
 };

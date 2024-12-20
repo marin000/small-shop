@@ -113,6 +113,14 @@ export const handlePriceChange = (
   }
 };
 
+/**
+ * Checks if the minimum quantity for an item is reached.
+ *
+ * @param itemQuantity
+ * @param minQuantity
+ *
+ * @returns true if the current item quantity is either 1 or matches the minimum quantity, otherwise false.
+ */
 export const minQuantityReached = (
   itemQuantity: number,
   minQuantity: number
@@ -120,6 +128,14 @@ export const minQuantityReached = (
   return itemQuantity === 1 || itemQuantity === minQuantity;
 };
 
+/**
+ * Formats a credit card number by adding spaces after every 4 digits.
+ *
+ * @param cardNumber
+ *
+ * @returns The formatted credit card number
+ * Example: "1234 5678 9101 1121"
+ */
 export const formatCardNumber = (cardNumber: string) => {
   return cardNumber
     .replace(/\D/g, '')

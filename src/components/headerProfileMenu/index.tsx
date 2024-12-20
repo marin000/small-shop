@@ -2,16 +2,17 @@ import React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileAvatar from '../profileAvatar';
-import useUserStore from '@/store/userStore';
 import { Button } from '@headlessui/react';
 import { useTranslation } from 'react-i18next';
 import { useLogout } from '@/hooks/useLogout';
+import useUserActions from '@/hooks/useUserActions';
 
 const HeaderProfileMenu = () => {
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { user } = useUserStore((state) => state);
+  const { isUserLoggedIn, getUserDetails } = useUserActions();
+  const user = getUserDetails();
   const logout = useLogout();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
@@ -38,11 +39,11 @@ const HeaderProfileMenu = () => {
   return (
     <div className="relative" ref={menuRef}>
       <Button onClick={toggleMenu} className="focus:outline-none">
-        <ProfileAvatar image={user.image} size={40} />
+        <ProfileAvatar image={user?.image} size={40} />
       </Button>
       {isMenuOpen && (
         <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-md py-2 z-50">
-          {user.id ? (
+          {isUserLoggedIn() ? (
             <React.Fragment>
               <Link
                 to="/profile"

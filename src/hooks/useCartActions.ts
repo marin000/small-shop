@@ -33,7 +33,20 @@ const useCartActions = () => {
     }
   };
 
-  return { addProductToCart, getProductFromCart, isProductInCart };
+  const getTotalPrice = () =>
+    cart
+      .reduce(
+        (total, item) => total + item.details.price * item.quantity,
+        0
+      )
+      .toFixed(2);
+
+  return {
+    addProductToCart,
+    getProductFromCart,
+    isProductInCart,
+    getTotalPrice,
+  };
 };
 
 export default useCartActions;

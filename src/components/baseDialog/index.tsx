@@ -10,7 +10,7 @@ import CloseButton from '../closeButton';
 interface DialogProps {
   isOpen: boolean;
   onClose: () => void;
-  title: string;
+  title?: string;
   children: ReactNode;
 }
 

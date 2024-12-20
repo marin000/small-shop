@@ -32,7 +32,10 @@ export const useLoginRequest = () => {
       const userData = mapLoginResponseToUserData(data.data);
       setUser(userData);
 
-      navigate('/');
+      const lastVisitedPage =
+        localStorage.getItem('lastVisitedPage') ?? '/';
+      navigate(lastVisitedPage === '/cart' ? '/cart' : '/');
+      localStorage.removeItem('lastVisitedPage');
     },
     onError: (error: AxiosError) => {
       if (error.status === 400) {
