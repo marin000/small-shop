@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@headlessui/react';
 import Sidebar from './sidebar';
 import useCartStore from '@/store/cartStore';
-import HeaderProfileMenu from '../headerProfileMenu';
+import HeaderProfileMenu from './headerProfileMenu';
 
 const Header = () => {
   const { t } = useTranslation();

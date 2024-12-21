@@ -36,7 +36,7 @@ const BaseMenu: React.FC<BaseMenuProps> = ({
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        <MenuItems className="absolute right-0 mt-2 w-16 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <MenuItems className="absolute right-0 mt-2 w-16 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
           <div className="py-1">
             {options.map((option) => (
               <MenuItem key={option} as="div">

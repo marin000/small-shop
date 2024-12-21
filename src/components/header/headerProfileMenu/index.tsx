@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ProfileAvatar from '../profileAvatar';
 import { Button } from '@headlessui/react';
+import ProfileAvatar from '@/components/profileAvatar';
 import { useTranslation } from 'react-i18next';
 import { useLogout } from '@/hooks/useLogout';
 import useUserActions from '@/hooks/useUserActions';

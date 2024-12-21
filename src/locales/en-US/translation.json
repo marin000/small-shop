@@ -10,7 +10,8 @@
   "common": {
     "searchButtonLabel": "Search (3 characters minimum)",
     "paginationFirstPart": "Showing {{ start }} to ",
-    "paginationSecondPart": "of {{ totalResults }} results"
+    "paginationSecondPart": "of {{ totalResults }}",
+    "paginationResultTxt": "results"
   },
   "toast": {
     "dashboard": {

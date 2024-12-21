@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { Button } from '@headlessui/react';
 import { useTranslation } from 'react-i18next';
@@ -17,9 +17,28 @@ const Sidebar: React.FC<SidebarProps> = ({
   toggleSidebar,
 }) => {
   const { t } = useTranslation();
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        toggleSidebar();
+      }
+    };
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, toggleSidebar]);
 
   return (
     <div
+      ref={sidebarRef}
       className={`fixed top-0 left-0 h-full w-80 bg-black text-white z-50 transform transition-transform duration-300 ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}

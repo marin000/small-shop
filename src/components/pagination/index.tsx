@@ -83,10 +83,13 @@ const Pagination: React.FC<PaginationProps> = ({
             options={itemsPerPageOptions}
             onOptionSelect={onItemsPerPageChange}
           />
-          <span className="block sm:inline w-full sm:w-auto">
-            {t('common.paginationSecondPart', {
-              totalResults,
-            })}
+          <span className="flex items-center space-x-1">
+            <span>
+              {t('common.paginationSecondPart', {
+                totalResults,
+              })}
+            </span>
+            <span>{t('common.paginationResultTxt')}</span>
           </span>
         </span>
       </div>

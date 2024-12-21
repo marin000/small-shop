@@ -7,6 +7,9 @@ const useCartActions = () => {
   const { t } = useTranslation();
   const { showToast } = useToastContext();
   const addToCart = useCartStore((state) => state.addToCart);
+  const updateProductQuantity = useCartStore(
+    (state) => state.updateCartItem
+  );
 
   const cart = useCartStore((state) => state.cartItems);
 
@@ -23,6 +26,10 @@ const useCartActions = () => {
         t('toast.dashboard.updateCartMsg'),
         'info'
       );
+      const productInCartQuantity =
+        getProductFromCart(product)?.quantity || 0;
+      const newQuantity = quantity + productInCartQuantity;
+      updateProductQuantity(product.id, newQuantity);
     } else {
       addToCart(product, quantity);
       showToast(
