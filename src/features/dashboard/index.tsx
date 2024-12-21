@@ -82,7 +82,7 @@ const Dashboard: React.FC = () => {
     max: number | ''
   ) => {
     setMinPrice(min);
-    if (maxPrice && maxPrice !== 0) setMaxPrice(max);
+    if (max && max !== 0) setMaxPrice(max);
     if (min || max) {
       showToast(
         t('toast.dashboard.priceWarningTitle'),
