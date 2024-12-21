@@ -12,6 +12,9 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
+   <li>
+    <a href="#production">Production</a>
+    </li>
   </ol>
 
 ## 1. About The App
@@ -70,5 +73,8 @@ docker-compose up
 ```bash
 docker-compose down
 ```
+
+## 3. Production
+https://grabandgoshop.netlify.app/
 
 <p align="right"><a href="#small-shop">back to top</a></p>
