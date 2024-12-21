@@ -1,3 +1,4 @@
+import { CartItem } from '@/types/cart';
 import { Product } from '@/types/product';
 import { SortOption } from '@/types/sortFilter';
 import _ from 'lodash';
@@ -141,3 +142,10 @@ export const formatCardNumber = (cardNumber: string) => {
     .replace(/\D/g, '')
     .replace(/(\d{4})(?=\d)/g, '$1 ');
 };
+
+export const checkOutOfStock = (
+  stock: number,
+  minimumOrderQuantity: number,
+  productInCart: CartItem | undefined
+) =>
+  stock < minimumOrderQuantity || productInCart?.quantity === stock;

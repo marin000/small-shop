@@ -10,11 +10,13 @@ import clsx from 'clsx';
 interface CartToggleButtonProps {
   product: Product;
   className?: string;
+  isOutOfStock: boolean;
 }
 
 const CartAddButton: React.FC<CartToggleButtonProps> = ({
   product,
   className,
+  isOutOfStock,
 }) => {
   const { t } = useTranslation();
   const { showToast } = useToastContext();
@@ -24,7 +26,6 @@ const CartAddButton: React.FC<CartToggleButtonProps> = ({
   const { stock, minimumOrderQuantity } = product.details;
 
   const productInCart = getProductFromCart(product);
-  const isOutOfStock = stock < minimumOrderQuantity;
 
   const [quantity, setQuantity] = useState<number>(
     productInCart ? 1 : minimumOrderQuantity

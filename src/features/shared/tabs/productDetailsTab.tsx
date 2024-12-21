@@ -2,7 +2,7 @@ import React from 'react';
 import { formatPrice } from '@/utils/helper';
 import { Product } from '@/types/product';
 import BaseCard from '@/components/baseCard';
-import ProductDetail from '@/features/dashboard/components/productDetail';
+import ProductDetail from '../productDetail';
 import { t } from 'i18next';
 
 interface ProductDetailsTabProps {

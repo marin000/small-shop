@@ -61,8 +61,10 @@ const Dashboard: React.FC = () => {
   const handleOnSearchChange = (searchTerm: string) =>
     setSearchTerm(searchTerm);
 
-  const handleOnCategoryChange = (category: CategoryFormatted) =>
+  const handleOnCategoryChange = (category: CategoryFormatted) => {
     setSelectedCategory(category);
+    setCurrentSkip(0);
+  };
 
   const handlePageChange = (page: number) => {
     const newSkip = (page - 1) * itemsPerPage;
