@@ -15,10 +15,7 @@ import useCartActions from '@/hooks/useCartActions';
 import PaymentSuccessDialog from './components/paymentSuccessDialog';
 import useCartStore from '@/store/cartStore';
 import useUserActions from '@/hooks/useUserActions';
-
-interface cvcNumber {
-  cvc: string;
-}
+import { cvcNumber } from '@/types/user';
 
 const Checkout: React.FC = () => {
   const { t } = useTranslation();
@@ -35,9 +32,7 @@ const Checkout: React.FC = () => {
 
   const { clearCart } = useCartStore((state) => state);
 
-  const { data, isLoading, isError } = loggedInUser?.id
-    ? useGetUser(loggedInUser.id)
-    : { data: null, isLoading: false, isError: false };
+  const { data, isLoading, isError } = useGetUser(loggedInUser?.id);
 
   const { address, bank } = data || {};
 

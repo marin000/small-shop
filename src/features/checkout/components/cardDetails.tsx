@@ -4,11 +4,11 @@ import BaseCard from '@/components/baseCard';
 import { useTranslation } from 'react-i18next';
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 import { formatCardNumber } from '@/utils/helper';
-import { UserBank } from '@/types/user';
+import { cvcNumber, UserBank } from '@/types/user';
 
 interface CardDetailsProps {
   bank?: UserBank;
-  register: UseFormRegister<any>;
+  register: UseFormRegister<cvcNumber>;
   errors: FieldErrors;
 }
 

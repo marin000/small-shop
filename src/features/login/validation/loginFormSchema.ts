@@ -1,6 +1,7 @@
+import { TFunction } from 'i18next';
 import { z } from 'zod';
 
-export const loginFormSchema = (t: any) =>
+export const loginFormSchema = (t: TFunction) =>
   z.object({
     username: z
       .string()

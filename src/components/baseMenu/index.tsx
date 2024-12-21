@@ -40,7 +40,7 @@ const BaseMenu: React.FC<BaseMenuProps> = ({
           <div className="py-1">
             {options.map((option) => (
               <MenuItem key={option} as="div">
-                {({}) => (
+                {() => (
                   <Button
                     onClick={() => onOptionSelect(option)}
                     className="block px-4 py-2 text-sm text-gray-700 w-full text-left"

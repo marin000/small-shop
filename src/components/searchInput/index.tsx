@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Input } from '@headlessui/react';
 import { useTranslation } from 'react-i18next';
 import { debounce } from 'lodash';
@@ -15,12 +15,13 @@ const SearchInput: React.FC<SearchInputProps> = ({
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const debouncedSearchChange = useCallback(
-    debounce((value: string) => {
-      if (value.trim().length >= 3) {
-        onSearchChange(value);
-      }
-    }, 300),
+  const debouncedSearchChange = useMemo(
+    () =>
+      debounce((value: string) => {
+        if (value.trim().length >= 3) {
+          onSearchChange(value);
+        }
+      }, 300),
     [onSearchChange]
   );
 

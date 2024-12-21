@@ -37,3 +37,26 @@ export interface Product {
   thumbnail: string;
   reviews: Review[];
 }
+
+export interface RawProduct {
+  id: number;
+  title: string;
+  images: string[];
+  thumbnail: string;
+  reviews: Review[];
+  description: string;
+  brand: string;
+  category: string;
+  dimensions: Dimensions;
+  weight: number;
+  rating: number;
+  returnPolicy: string;
+  shippingInformation: string;
+  warrantyInformation: string;
+  price: number;
+  discountPercentage: number;
+  sku: string;
+  availabilityStatus: string;
+  stock: number;
+  minimumOrderQuantity: number;
+}

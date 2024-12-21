@@ -1,6 +1,7 @@
+import { TFunction } from 'i18next';
 import { z } from 'zod';
 
-export const checkoutFormSchema = (t: any) =>
+export const checkoutFormSchema = (t: TFunction) =>
   z.object({
     cvc: z
       .string()

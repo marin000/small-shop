@@ -31,3 +31,7 @@ export interface BaseUserData {
   email: string;
   image: string;
 }
+
+export interface cvcNumber {
+  cvc: string;
+}

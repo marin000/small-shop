@@ -1,6 +1,8 @@
-import { Product } from '@/types/product';
+import { Product, RawProduct } from '@/types/product';
 
-export const formatProductData = (products: any[]): Product[] => {
+export const formatProductData = (
+  products: RawProduct[]
+): Product[] => {
   return products.map((product) => ({
     id: product.id,
     title: product.title,
