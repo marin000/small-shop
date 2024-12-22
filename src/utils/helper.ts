@@ -12,6 +12,10 @@ import _ from 'lodash';
  * @returns The truncated text.
  */
 export const truncateText = (text: string, maxLength: number) => {
+  if (text.length <= maxLength) {
+    return text;
+  }
+
   const truncated = text.slice(0, maxLength);
   const lastSpaceIndex = truncated.lastIndexOf(' ');
 
@@ -108,6 +112,11 @@ export const handlePriceChange = (
   value: string,
   setter: React.Dispatch<React.SetStateAction<number | ''>>
 ) => {
+  if (value === '') {
+    setter('');
+    return;
+  }
+
   const parsedValue = _.toNumber(value);
   if (!_.isNaN(parsedValue) || value === '') {
     setter(parsedValue);
