@@ -9,7 +9,7 @@ const getRefreshToken = (): string | null => {
 };
 
 const setToken = (token: string): void => {
-  Cookies.set('token', token, { expires: 7 });
+  Cookies.set('token', token, { expires: 1 });
 };
 
 const setRefreshToken = (refreshToken: string): void => {
