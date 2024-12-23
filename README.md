@@ -12,8 +12,11 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-   <li>
-    <a href="#production">Production</a>
+    <li>
+      <a href="#production">Production</a>
+    </li>
+    <li>
+      <a href="#documentation">Documentation</a>
     </li>
   </ol>
 
@@ -44,6 +47,8 @@ Small product catalog
 git https://github.com/marin000/small-shop.git
 cd small-shop
 ```
+
+#### 2. Create .env file (you have .env.example)
 
 ### Running Without Docker
 
@@ -76,5 +81,8 @@ docker-compose down
 
 ## 3. Production
 https://grabandgoshop.netlify.app/
+
+## 4. Documentation
+All documentation about this APP you can find in documentation folder.
 
 <p align="right"><a href="#small-shop">back to top</a></p>

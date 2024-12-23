@@ -1,10 +1,14 @@
+import { getToken } from '@/services/tokenService';
 import useUserStore from '@/store/userStore';
 
 const useUserActions = () => {
   const { user } = useUserStore((state) => state);
 
   const isUserLoggedIn = () => {
-    return user && user.id !== null && user.id !== undefined;
+    const token = getToken();
+    const userInStore =
+      user && user.id !== null && user.id !== undefined;
+    return token && userInStore;
   };
 
   const getUserDetails = () => {
