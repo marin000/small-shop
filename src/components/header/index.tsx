@@ -44,10 +44,7 @@ const Header = () => {
         </span>
       </Link>
       <div className="flex items-center space-x-8">
-        <Link
-          to="/cart"
-          className="text-white hidden md:flex relative"
-        >
+        <Link to="/cart" className="text-white relative">
           <ShoppingCartIcon className="w-8 h-8" />
           {cartItems.length > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">

@@ -166,7 +166,7 @@ const Dashboard: React.FC = () => {
         variant="white"
         size="large"
         iconStart={<AdjustmentsHorizontalIcon className="w-5 h-5" />}
-        className="fixed bottom-8 right-8"
+        className="fixed bottom-12 right-8"
       />
       <FilterDialog
         isOpen={isFilterDialogOpen}
