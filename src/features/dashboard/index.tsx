@@ -58,8 +58,10 @@ const Dashboard: React.FC = () => {
     isError: categoriesError,
   } = useGetCategories();
 
-  const handleOnSearchChange = (searchTerm: string) =>
+  const handleOnSearchChange = (searchTerm: string) => {
     setSearchTerm(searchTerm);
+    setCurrentSkip(0);
+  };
 
   const handleOnCategoryChange = (category: CategoryFormatted) => {
     setSelectedCategory(category);
