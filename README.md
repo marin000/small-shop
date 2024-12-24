@@ -1,4 +1,4 @@
-# Small Shop
+# Grab & Go
 
 <h3>Table of Contents</h3>
   <ol>
@@ -22,7 +22,7 @@
 
 ## 1. About The App
 
-Small product catalog
+The "Grab & Go" app is an online store where users can browse and purchase various products. It features an easy-to-navigate interface with categories of items, a shopping cart, and a checkout process. The website emphasizes a quick and simple shopping experience, allowing customers to quickly grab products and proceed with their orders.
 
 #### App Built With:
 
