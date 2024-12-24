@@ -34,8 +34,9 @@ const Login: React.FC = () => {
         <h1 className="text-2xl font-bold mb-4 text-center">
           {t('login.title')}
         </h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form id="form" name="form" onSubmit={handleSubmit(onSubmit)}>
           <BaseInput
+            id="username"
             label={t('login.usernameLabel')}
             type="text"
             placeholder={t('login.usernamePlaceholder')}
@@ -45,6 +46,7 @@ const Login: React.FC = () => {
           />
 
           <BaseInput
+            id="password"
             label={t('login.passwordLabel')}
             type="password"
             placeholder={t('login.passwordPlaceholder')}

@@ -26,7 +26,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({
   } = product.details;
 
   const truncatedDescription =
-    description.length > descriptionMaxLength
+    description?.length > descriptionMaxLength
       ? truncateText(description, descriptionMaxLength)
       : description;
 

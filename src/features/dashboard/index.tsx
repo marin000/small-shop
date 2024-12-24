@@ -161,6 +161,8 @@ const Dashboard: React.FC = () => {
         </React.Fragment>
       )}
       <BaseButton
+        id="filter-button"
+        name="filter-button"
         label={t('dashboard.filterButton')}
         onClick={() => setIsFilterDialogOpen(true)}
         variant="white"

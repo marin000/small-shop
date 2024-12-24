@@ -27,7 +27,10 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
   return (
     <React.Fragment>
-      <BaseCard className="relative hover:shadow-lg transition min-w-72">
+      <BaseCard
+        id="product-card"
+        className="relative hover:shadow-lg transition min-w-72"
+      >
         <ProductHeader
           product={product}
           isOutOfStock={isOutOfStock}

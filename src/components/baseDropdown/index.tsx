@@ -32,6 +32,7 @@ const BaseDropdown: React.FC<BaseDropdownProps> = ({
     <React.Fragment>
       <Menu
         id={id}
+        data-testid={id}
         refName={name}
         as="div"
         className={clsx('relative inline-block text-left', className)}

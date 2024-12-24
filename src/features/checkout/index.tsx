@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useGetUser } from '@/api/getUser';
 import BaseButton from '@/components/baseButton';
 import LoadFailed from '@/components/loadFailed';
 import LoadingSpinner from '@/components/loadingSpinner';
-import { useLogout } from '@/hooks/useLogout';
-import { useToastContext } from '@/providers/toastContext';
 import { useTranslation } from 'react-i18next';
 import { checkoutFormSchema } from './validation/checkoutFormSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,8 +17,6 @@ import { cvcNumber } from '@/types/user';
 
 const Checkout: React.FC = () => {
   const { t } = useTranslation();
-  const { showToast } = useToastContext();
-  const logout = useLogout();
 
   const { getUserDetails } = useUserActions();
   const loggedInUser = getUserDetails();
@@ -35,17 +31,6 @@ const Checkout: React.FC = () => {
   const { data, isLoading, isError } = useGetUser(loggedInUser?.id);
 
   const { address, bank } = data || {};
-
-  useEffect(() => {
-    if (!loggedInUser?.id) {
-      showToast(
-        t('toast.checkout.noUserTitle'),
-        t('toast.checkout.noUserMsg'),
-        'error'
-      );
-      logout();
-    }
-  }, [loggedInUser?.id, showToast, logout, t]);
 
   const formOptions = {
     resolver: zodResolver(checkoutFormSchema(t)),

@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import React, { Ref } from 'react';
 
 type ButtonProps = {
+  id?: string;
+  name?: string;
   label?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   type?: 'button' | 'submit' | 'reset';
@@ -22,6 +24,8 @@ type ButtonProps = {
 };
 
 const BaseButton: React.FC<ButtonProps> = ({
+  id,
+  name,
   label,
   onClick,
   type = 'button',
@@ -51,6 +55,8 @@ const BaseButton: React.FC<ButtonProps> = ({
 
   return (
     <Button
+      id={id}
+      name={name}
       ref={ref}
       type={type}
       aria-label={label}

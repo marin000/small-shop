@@ -3,7 +3,7 @@
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "useDefineForClassFields": true,
-    "types": ["vite/client", "jest"],
+    "types": ["vite/client", "jest", "@testing-library/jest-dom", "node"],
     "module": "ESNext",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,

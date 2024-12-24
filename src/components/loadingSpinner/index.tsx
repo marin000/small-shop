@@ -12,6 +12,8 @@ const LoadingSpinner: React.FC<ILoadingSpinnerProps> = ({
 }) => {
   return (
     <div
+      id="loading-spinner"
+      data-testid="loading-spinner"
       className={clsx(
         'animate-spin',
         'rounded-full',

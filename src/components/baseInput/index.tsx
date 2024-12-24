@@ -83,6 +83,7 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
             <Input
               ref={ref}
               id={id}
+              data-testid={id}
               name={name}
               type={isPasswordType && showPassword ? 'text' : type}
               className={clsx(
@@ -92,7 +93,7 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
               )}
               onKeyDown={handleKeyDown}
               disabled={disabled}
-              aria-labelledby={id}
+              aria-describedby={id}
               aria-required={required}
               {...rest}
             />
